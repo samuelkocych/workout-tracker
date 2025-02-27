@@ -6,7 +6,19 @@
         xmlns:local="clr-namespace:WorkoutTrackerApp"
         mc:Ignorable="d"
         Title="Home" Height="450" Width="800">
-    <Grid>
-        <TextBlock Text="Home"/>
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
     </Grid>
 </Page>
