@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="10" HorizontalAlignment="Center">
+            <TextBlock Name="tblkHome" Text="HOME" MouseDown="tblkHome_MouseDown" Margin="10"/>
+            <TextBlock Name="tblkNewTraining" Text="NEW TRAINING" MouseDown="tblkNewTraining_MouseDown" Margin="10"/>
+            <TextBlock Name="tblkHistory" Text="HISTORY" MouseDown="tblkHistory_MouseDown" Margin="10"/>
+            <TextBlock Name="tblkProgress" Text="PROGRESS" MouseDown="tblkProgress_MouseDown" Margin="10"/>
+        </StackPanel>        
     </Grid>
 </Window>

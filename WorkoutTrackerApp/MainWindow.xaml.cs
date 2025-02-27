@@ -24,5 +24,25 @@ namespace WorkoutTrackerApp
         {
             InitializeComponent();
         }
+
+        private void tblkHome_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void tblkNewTraining_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void tblkHistory_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void tblkProgress_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
