@@ -12,11 +12,13 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Margin="10" HorizontalAlignment="Center">
-            <TextBlock Name="tblkHome" Text="HOME" MouseDown="tblkHome_MouseDown" Margin="10"/>
-            <TextBlock Name="tblkNewTraining" Text="NEW TRAINING" MouseDown="tblkNewTraining_MouseDown" Margin="10"/>
-            <TextBlock Name="tblkHistory" Text="HISTORY" MouseDown="tblkHistory_MouseDown" Margin="10"/>
-            <TextBlock Name="tblkProgress" Text="PROGRESS" MouseDown="tblkProgress_MouseDown" Margin="10"/>
-        </StackPanel>        
+        <StackPanel HorizontalAlignment="Center" Background="LightBlue">
+            <TextBlock Name="tblkHome" Text="🏠 HOME" MouseDown="tblkHome_MouseDown" Margin="10" Cursor="Hand"/>
+            <TextBlock Name="tblkNewTraining" Text="➕ NEW TRAINING" MouseDown="tblkNewTraining_MouseDown" Margin="10" Cursor="Hand"/>
+            <TextBlock Name="tblkHistory" Text="📜 HISTORY" MouseDown="tblkHistory_MouseDown" Margin="10" Cursor="Hand"/>
+            <TextBlock Name="tblkProgress" Text="📊 PROGRESS" MouseDown="tblkProgress_MouseDown" Margin="10" Cursor="Hand"/>
+        </StackPanel>
+
+        <Frame Name="mainFrame" Grid.Column="1" Source="Home.xaml" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
