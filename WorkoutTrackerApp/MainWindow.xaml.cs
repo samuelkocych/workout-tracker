@@ -27,22 +27,22 @@ namespace WorkoutTrackerApp
 
         private void tblkHome_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            mainFrame.NavigationService.Navigate(new Uri("Home.xaml", UriKind.Relative));
         }
 
         private void tblkNewTraining_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            mainFrame.NavigationService.Navigate(new Uri("NewTraining.xaml", UriKind.Relative));
         }
 
         private void tblkHistory_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            mainFrame.NavigationService.Navigate(new Uri("History.xaml", UriKind.Relative));
         }
 
         private void tblkProgress_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            mainFrame.NavigationService.Navigate(new Uri("Progress.xaml", UriKind.Relative));
         }
     }
 }
