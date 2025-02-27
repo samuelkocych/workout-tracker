@@ -52,5 +52,25 @@
 
             </StackPanel>
         </Grid>
+
+        <Border Grid.Row="1" Background="LightGray" CornerRadius="20" Margin="10">
+            <TextBlock Text="Start new training!" Padding="10" HorizontalAlignment="center"/>
+        </Border>
+
+        <Grid Grid.Row="2" ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="LightGray" CornerRadius="20" Margin="10">
+                <TextBlock Text="Motivational Quote" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+
+            <Border Grid.Column="1" Background="LightGray" CornerRadius="20" Margin="10">
+                <TextBlock Text="Next Training" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </Grid>
+        
     </Grid>
 </Page>
