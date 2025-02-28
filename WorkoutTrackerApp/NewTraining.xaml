@@ -22,7 +22,19 @@
                 <ComboBoxItem Content="Deadlit"/>
                 <ComboBoxItem Content="Pull-up"/>
             </ComboBox>
+            <TextBox Name="tbxSets" Text="Sets" Width="50" Margin="5"/>
+            <TextBox Name="tbxReps" Text="Reps" Width="50" Margin="5"/>
+            <TextBox Name="tbxWeight" Text="Weight" Width="50" Margin="5"/>
+            <Button Name="btnAddExercise" Content="Add" Width="50" Margin="5"/>
         </StackPanel>
-        
+
+        <ListBox Name="lbxExercises" Grid.Row="1" Margin="10"/>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10">
+            <TextBox Name="tbxTotalDuration" Text="Total Duration" Width="50" Margin="5"/>
+            <TextBlock Name="tbxCaloriesBurned" Text="Calories Burned" Width="50" Margin="5"/>
+            <Button Name="btnSaveTraining" Content="Save" Width="50" Margin="5"/>
+        </StackPanel>
+
     </Grid>
 </Page>
