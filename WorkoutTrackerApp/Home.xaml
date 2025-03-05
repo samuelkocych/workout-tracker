@@ -5,59 +5,67 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WorkoutTrackerApp"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="History">
-    
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="Home">
+
     <Grid ShowGridLines="True">
+        
         <Grid.RowDefinitions>
-            <RowDefinition Height="60*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="40*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" ShowGridLines="True">
+        <Grid ShowGridLines="True" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
             <!-- Chart -->
-            <Border Grid.Column="0" Margin="10" BorderBrush="LightGray" BorderThickness="2" CornerRadius="20">
+            <Border Margin="10" BorderBrush="LightGray" BorderThickness="2" CornerRadius="20">
                 <TextBlock Text="Chart here" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
-            
-            <!-- Stats -->
-            <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Center">
 
-                <Border Background="LightGray" CornerRadius="10" Padding="10" Margin="5">
-                    <StackPanel HorizontalAlignment="Center">
+            <!-- Stats -->
+            <Grid Grid.Column="1" ShowGridLines="True" Margin="10">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Border Background="LightGray" CornerRadius="10" Padding="20" Margin="5">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBlock Text="⏳Total Time" FontWeight="Bold" Foreground="Gray" TextAlignment="Center"/>
                         <TextBlock Text="45 min" FontWeight="Bold" TextAlignment="Center"/>
                     </StackPanel>
                 </Border>
 
-                <Border Background="LightGray" CornerRadius="10" Padding="10" Margin="5">
+                <Border Grid.Row="1" Background="LightGray" CornerRadius="10" Padding="10" Margin="5">
                     <StackPanel HorizontalAlignment="Center">
                         <TextBlock Text="🔥 Calories Burned" FontWeight="Bold" Foreground="Gray" TextAlignment="Center"/>
                         <TextBlock Text="45 min" FontWeight="Bold" TextAlignment="Center"/>
                     </StackPanel>
                 </Border>
 
-                <Border Background="LightGray" CornerRadius="10" Padding="10" Margin="5">
+                <Border Grid.Row="2" Background="LightGray" CornerRadius="10" Padding="10" Margin="5">
                     <StackPanel HorizontalAlignment="Center">
                         <TextBlock Text="🏋️‍ Weight Lifted" FontWeight="Bold" Foreground="Gray" TextAlignment="Center"/>
                         <TextBlock Text="45 min" FontWeight="Bold" TextAlignment="Center"/>
                     </StackPanel>
                 </Border>
 
-            </StackPanel>
+            </Grid>
+
         </Grid>
 
-        <Border Grid.Row="1" Background="LightGray" CornerRadius="20" Margin="10">
+        <Border Grid.Row="1" Background="LightGray" CornerRadius="20" Margin="10,10,10,10" Grid.ColumnSpan="2">
             <TextBlock Text="Start new training!" Padding="10" HorizontalAlignment="center"/>
         </Border>
 
-        <Grid Grid.Row="2" ShowGridLines="True">
+        <Grid Grid.Row="1" ShowGridLines="True" Grid.ColumnSpan="2" Margin="0,56,0,0" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -71,6 +79,6 @@
                 <TextBlock Text="Next Training" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
         </Grid>
-        
+
     </Grid>
 </Page>

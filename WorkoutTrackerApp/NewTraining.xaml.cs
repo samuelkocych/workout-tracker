@@ -26,6 +26,9 @@ namespace WorkoutTrackerApp
             InitializeComponent();
         }
 
-        
+        private void btnAddExercise_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
