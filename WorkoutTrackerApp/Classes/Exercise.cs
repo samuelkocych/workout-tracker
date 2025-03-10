@@ -16,5 +16,18 @@ namespace WorkoutTrackerApp
 
         public int WorkoutID { get; set; }
         public virtual Workout Workout { get; set; }
+
+        public Exercise(string name, int sets, int reps, double weight)
+        {
+            Name = name;
+            Sets = sets;
+            Reps = reps;
+            Weight = weight;
+        }
+
+        public override string ToString()
+        {
+            return $"{Name} - {Sets} Sets x {Reps} Reps x {Weight} kg";
+        }
     }
 }
