@@ -85,5 +85,20 @@ namespace WorkoutTrackerApp
                 .FirstOrDefault(item => item.Content.ToString() == selectedExercise.Name); 
             }
         }
+
+        private void btnSaveTraining_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string name = tbxTrainingName.Text;
+                int duration = int.Parse(tbxTotalDuration.Text);
+                DateTime date = dpDatePicker.SelectedDate.GetValueOrDefault();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occured", ex.Message);
+            }
+
+        }
     }
 }

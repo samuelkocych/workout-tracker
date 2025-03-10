@@ -86,6 +86,6 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Button Name="btnSaveTraining" Grid.Row="3" Content="Save" Width="100" Margin="10"/>
+        <Button Name="btnSaveTraining" Grid.Row="3" Content="Save" Width="100" Margin="10" Click="btnSaveTraining_Click"/>
     </Grid>
 </Page>

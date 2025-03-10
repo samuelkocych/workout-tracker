@@ -15,5 +15,17 @@ namespace WorkoutTrackerApp
         public int TotalDuration { get; set; }
 
         public virtual List<Exercise> Exercises { get; set; }
+
+        public Workout(string name, DateTime date, int totalDuration)
+        {
+            Name = name;
+            Date = date;
+            TotalDuration = totalDuration;
+        }
+
+        public override string ToString()
+        {
+            return "";
+        }
     }
 }
