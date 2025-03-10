@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace WorkoutTrackerApp
 {
-    internal class Training
+    public class Workout
     {
+        public int WorkoutID { get; set; }
+        public string Name { get; set; }
+
+        public DateTime Date { get; set; }
+        public int TotalDuration { get; set; }
+
+        public virtual List<Exercise> Exercises { get; set; }
     }
 }
