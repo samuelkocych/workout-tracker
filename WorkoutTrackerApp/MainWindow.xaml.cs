@@ -44,5 +44,10 @@ namespace WorkoutTrackerApp
         {
             mainFrame.NavigationService.Navigate(new Uri("Progress.xaml", UriKind.Relative));
         }
+
+        private void tblkExercises_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
