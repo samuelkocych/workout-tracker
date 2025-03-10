@@ -16,10 +16,18 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBox Name="tbxTrainingName" Text="Training name" Width="100" Margin="10"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Workout Name"/>
+                <TextBox Name="tbxTrainingName" Text="Training name" Width="100" Margin="10"/>
+            </StackPanel>
+
             <DatePicker Name="dpDatePicker" Width="200" VerticalAlignment="Center"/>
-            <TextBox Name="tbxTotalDuration" Text="Total Duration" Width="100" Margin="10"/>
+
+            <StackPanel Orientation="Vertical">
+                <Label Content="Total Duration"/>
+                <TextBox Name="tbxTotalDuration" Width="100" Margin="10"/>
+            </StackPanel>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10">
