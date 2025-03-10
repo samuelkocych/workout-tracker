@@ -39,12 +39,22 @@ namespace WorkoutTrackerApp
             Exercise exercise = new Exercise(name, sets, reps, weight);
 
             lbxExercises.Items.Add(exercise);
+
+            // reset all values
+            cmbExercises.SelectedIndex = -1;
+            tbxSets.Clear();
+            tbxReps.Clear();
+            tbxWeight.Clear();
         }
 
         private void btnDeleteExercise_Click(object sender, RoutedEventArgs e)
         {
+            var selectedExercise = lbxExercises.SelectedItem;
 
-            
+            if (selectedExercise != null)
+            {
+                lbxExercises.Items.Remove(selectedExercise);
+            }
         }
 
         private void btnEditExercise_Click(object sender, RoutedEventArgs e)
