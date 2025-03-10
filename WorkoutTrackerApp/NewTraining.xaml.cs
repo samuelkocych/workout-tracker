@@ -29,11 +29,6 @@ namespace WorkoutTrackerApp
             InitializeComponent();
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void btnAddExercise_Click(object sender, RoutedEventArgs e)
         {
             string name = ((ComboBoxItem)cmbExercises.SelectedItem).Content.ToString();
@@ -44,6 +39,17 @@ namespace WorkoutTrackerApp
             Exercise exercise = new Exercise(name, sets, reps, weight);
 
             lbxExercises.Items.Add(exercise);
+        }
+
+        private void btnDeleteExercise_Click(object sender, RoutedEventArgs e)
+        {
+
+            
+        }
+
+        private void btnEditExercise_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

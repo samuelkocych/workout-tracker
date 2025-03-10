@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:WorkoutTrackerApp"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="NewTraining" Loaded="Page_Loaded">
+      Title="NewTraining">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -67,8 +67,25 @@
 
             <Button Name="btnAddExercise" Content="Add" Width="100" Height="20" Margin="15,8,15,8" VerticalAlignment="Bottom" Click="btnAddExercise_Click"/>
         </StackPanel>
-            
-        <ListBox Name="lbxExercises" Grid.Row="2" Margin="10"/>
+
+        <ListBox Name="lbxExercises" Grid.Row="2" Margin="10">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding}" Width="300" VerticalAlignment="Center"/>
+                        <Button Grid.Column="1" Name="btnEditExercise" Content="Edit" Width="60" Margin="5" Click="btnEditExercise_Click"/>
+                        <Button Grid.Column="2" Name="btnDeleteExercise" Content="Delete" Width="60" Margin="5" Click="btnDeleteExercise_Click"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
         <Button Name="btnSaveTraining" Grid.Row="3" Content="Save" Width="100" Margin="10"/>
     </Grid>
