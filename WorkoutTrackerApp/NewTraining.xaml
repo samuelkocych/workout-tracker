@@ -8,14 +8,20 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="NewTraining">
 
-    <Grid ShowGridLines="True">
+    <Grid ShowGridLines="True" Margin="10">
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10">
+        <StackPanel Orientation="Horizontal" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBox Name="tbxTrainingName" Text="Training name" Width="100" Margin="10"/>
+            <DatePicker Name="dpDatePicker" Width="200" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10">
             <ComboBox Name="cmbExercises" Width="150" Margin="5">
                 <ComboBoxItem Content="Bench Press"/>
                 <ComboBoxItem Content="Squat"/>
@@ -28,11 +34,11 @@
             <Button Name="btnAddExercise" Content="Add" Width="50" Margin="5"/>
         </StackPanel>
 
-        <ListBox Name="lbxExercises" Grid.Row="1" Margin="10"/>
+        <ListBox Name="lbxExercises" Grid.Row="2" Margin="10"/>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10">
-            <TextBox Name="tbxTotalDuration" Text="Total Duration" Width="50" Margin="5"/>
-            <TextBlock Name="tbxCaloriesBurned" Text="Calories Burned" Width="50" Margin="5"/>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="10">
+            <TextBox Name="tbxTotalDuration" Text="Total Duration" Width="100" Margin="5"/>
+            <TextBlock Name="tbxCaloriesBurned" Text="Calories Burned" Width="100" Margin="5"/>
             <Button Name="btnSaveTraining" Content="Save" Width="50" Margin="5"/>
         </StackPanel>
 
