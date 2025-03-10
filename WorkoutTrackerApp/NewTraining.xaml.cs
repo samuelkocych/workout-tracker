@@ -36,9 +36,23 @@ namespace WorkoutTrackerApp
             int reps = int.Parse(tbxReps.Text);
             double weight = double.Parse(tbxWeight.Text);
 
-            Exercise exercise = new Exercise(name, sets, reps, weight);
+            Exercise selectedExercise = lbxExercises.SelectedItem as Exercise;
 
-            lbxExercises.Items.Add(exercise);
+            if (selectedExercise != null)
+            {
+                selectedExercise.Name = name;
+                selectedExercise.Sets = sets;
+                selectedExercise.Reps = reps;
+                selectedExercise.Weight = weight;
+
+                lbxExercises.Items.Refresh();
+            }
+            else
+            {
+                Exercise newExercise = new Exercise(name, sets, reps, weight);
+                lbxExercises.Items.Add(newExercise);
+            }
+
 
             // reset all values
             cmbExercises.SelectedIndex = -1;
@@ -49,17 +63,27 @@ namespace WorkoutTrackerApp
 
         private void btnDeleteExercise_Click(object sender, RoutedEventArgs e)
         {
-            var selectedExercise = lbxExercises.SelectedItem;
-
-            if (selectedExercise != null)
+            if (lbxExercises.SelectedItem != null)
             {
-                lbxExercises.Items.Remove(selectedExercise);
+                lbxExercises.Items.Remove(lbxExercises.SelectedItem);
             }
         }
 
         private void btnEditExercise_Click(object sender, RoutedEventArgs e)
         {
+            Exercise selectedExercise = lbxExercises.SelectedItem as Exercise;
 
+            if (selectedExercise != null)
+            {
+                tbxSets.Text = selectedExercise.Sets.ToString();
+                tbxReps.Text = selectedExercise.Reps.ToString();
+                tbxWeight.Text = selectedExercise.Weight.ToString();
+
+                //this code finds the combo box item whose content matches the exercise name and sets it as the selected item in the combo box
+                cmbExercises.SelectedItem = cmbExercises.Items 
+                .Cast<ComboBoxItem>()                          
+                .FirstOrDefault(item => item.Content.ToString() == selectedExercise.Name); 
+            }
         }
     }
 }
