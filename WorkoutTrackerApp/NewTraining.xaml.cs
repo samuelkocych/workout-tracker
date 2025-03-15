@@ -31,11 +31,32 @@ namespace WorkoutTrackerApp
 
         private void btnAddExercise_Click(object sender, RoutedEventArgs e)
         {
-            string name = ((ComboBoxItem)cmbExercises.SelectedItem).Content.ToString();
-            int sets = int.Parse(tbxSets.Text);
-            int reps = int.Parse(tbxReps.Text);
-            double weight = double.Parse(tbxWeight.Text);
+            if (cmbExercises.SelectedItem == null)
+            {
+                MessageBox.Show("Please select an exercise");
+                return;
+            }
 
+            if (!int.TryParse(tbxSets.Text, out int sets) || sets <= 0)
+            {
+                MessageBox.Show("Please enter a valid number of sets");
+                return;
+            }
+
+            if (!int.TryParse(tbxReps.Text, out int reps) || reps <= 0)
+            {
+                MessageBox.Show("Please enter a valid number of reps.");
+                return;
+            }
+
+            if (!double.TryParse(tbxWeight.Text, out double weight) || weight < 0)
+            {
+                MessageBox.Show("Please enter a valid weight.");
+                return;
+            }
+
+            string name = ((ComboBoxItem)cmbExercises.SelectedItem).Content.ToString();
+           
             Exercise selectedExercise = lbxExercises.SelectedItem as Exercise;
 
             if (selectedExercise != null)
@@ -101,6 +122,18 @@ namespace WorkoutTrackerApp
                     ex.Workout = workout;
                     workout.Exercises.Add(ex);
                 }
+
+                db.Workouts.Add(workout);
+                db.SaveChanges();
+
+
+                MessageBox.Show("Wokrout succesfully saved");
+
+                // reset the form
+                tbxTrainingName.Clear();
+                tbxTotalDuration.Clear();
+                dpDatePicker.SelectedDate = null;
+                lbxExercises.Items.Clear();
             }
             catch (Exception ex)
             {

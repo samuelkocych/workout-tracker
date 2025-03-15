@@ -21,11 +21,12 @@ namespace WorkoutTrackerApp
             Name = name;
             Date = date;
             TotalDuration = totalDuration;
+            Exercises = new List<Exercise>();
         }
 
         public override string ToString()
         {
-            return "";
+            return $"{Name} ({Date.ToShortDateString()}) - {TotalDuration} min";
         }
     }
 }
