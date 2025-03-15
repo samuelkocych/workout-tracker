@@ -91,8 +91,16 @@ namespace WorkoutTrackerApp
             try
             {
                 string name = tbxTrainingName.Text;
-                int duration = int.Parse(tbxTotalDuration.Text);
                 DateTime date = dpDatePicker.SelectedDate.GetValueOrDefault();
+                int duration = int.Parse(tbxTotalDuration.Text);
+
+                Workout workout = new Workout(name, date, duration);
+
+                foreach (Exercise ex in lbxExercises.Items)
+                {
+                    ex.Workout = workout;
+                    workout.Exercises.Add(ex);
+                }
             }
             catch (Exception ex)
             {
