@@ -16,6 +16,11 @@ namespace WorkoutTrackerApp
 
         public virtual List<Exercise> Exercises { get; set; }
 
+        public Workout()
+        {
+            Exercises = new List<Exercise>();
+        }
+
         public Workout(string name, DateTime date, int totalDuration)
         {
             Name = name;

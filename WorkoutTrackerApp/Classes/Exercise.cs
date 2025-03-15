@@ -17,6 +17,8 @@ namespace WorkoutTrackerApp
         public int WorkoutID { get; set; }
         public virtual Workout Workout { get; set; }
 
+        public Exercise() { }
+        
         public Exercise(string name, int sets, int reps, double weight)
         {
             Name = name;
