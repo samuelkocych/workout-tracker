@@ -19,7 +19,7 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Padding="10" Margin="10" Width="250">
+                        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Padding="10" Margin="10" Width="">
                             <StackPanel>
                                 <TextBlock Text="{Binding Name}" FontSize="18" FontWeight="Bold"/>
                                 <TextBlock Text="{Binding Date, StringFormat='yyyy-MM-dd'}" FontSize="14" Foreground="Gray"/>
@@ -36,7 +36,7 @@
 
                                 <Separator/>
 
-                                <Button Content="Delete" Click="DeleteWorkout_Click" Tag="{Binding WorkoutID}" Background="Red" Foreground="White" />
+                                <Button Name="btnDelete" Content="Delete" Click="btnDelete_Click" Tag="{Binding WorkoutID}" Background="Red" Foreground="White" />
                             </StackPanel>
                         </Border>
                     </DataTemplate>

@@ -47,5 +47,10 @@ namespace WorkoutTrackerApp
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
