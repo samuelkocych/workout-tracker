@@ -21,42 +21,30 @@ namespace WorkoutTrackerApp
     /// </summary>
     public partial class History : Page
     {
-        WorkoutData db = new WorkoutData(); // Připojení k databázi
+        WorkoutData db = new WorkoutData();
 
         public History()
         {
             InitializeComponent();
-            LoadWorkouts();
+            LoadWorkouts(); //method to load workouts
         }
 
-        private void LoadWorkouts()
+        public void LoadWorkouts()
         {
-            var workouts = db.Workouts
-                             .OrderByDescending(w => w.Date) // Seřadíme od nejnovějšího
-                             .ToList();
-
-            icWorkouts.ItemsSource = workouts; // Přiřazení dat do XAML
-        }
-       
-        private void DeleteWorkout_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = sender as Button;
-            if (button != null)
+            try
             {
-                int workoutID = (int)button.Tag;
+                var query = from w in db.Workouts
+                            orderby w.Date descending
+                            select w;
 
-                var workout = db.Workouts.FirstOrDefault(w => w.WorkoutID == workoutID);
-                if (workout != null)
-                {
-                    // Potvrzení mazání
-                    MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this workout?", "Delete", MessageBoxButton.YesNo);
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        db.Workouts.Remove(workout);
-                        db.SaveChanges();
-                        LoadWorkouts(); // Aktualizace UI
-                    }
-                }
+                var workouts = query.ToList();
+
+                icWorkouts.ItemsSource = workouts; 
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
