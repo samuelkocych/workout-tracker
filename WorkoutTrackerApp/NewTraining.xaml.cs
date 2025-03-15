@@ -80,6 +80,8 @@ namespace WorkoutTrackerApp
             tbxSets.Clear();
             tbxReps.Clear();
             tbxWeight.Clear();
+
+            lbxExercises.SelectedItem = null;
         }
 
         private void btnDeleteExercise_Click(object sender, RoutedEventArgs e)
@@ -112,8 +114,8 @@ namespace WorkoutTrackerApp
             try
             {
                 string name = tbxTrainingName.Text;
-                DateTime date = dpDatePicker.SelectedDate.GetValueOrDefault();
                 int duration = int.Parse(tbxTotalDuration.Text);
+                DateTime date = dpDatePicker.SelectedDate.GetValueOrDefault();
 
                 Workout workout = new Workout(name, date, duration);
 
@@ -139,7 +141,6 @@ namespace WorkoutTrackerApp
             {
                 MessageBox.Show("An error occured", ex.Message);
             }
-
         }
     }
 }
