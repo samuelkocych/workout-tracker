@@ -9,6 +9,40 @@
       Title="History">
 
     <Grid>
-        <TextBlock Text="History"/>
+        <TextBlock Text="History" FontSize="22" FontWeight="Bold" Margin="10"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsControl Name="icWorkouts">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Name}" FontSize="18" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Date, StringFormat='yyyy-MM-dd'}" FontSize="14" Foreground="Gray"/>
+
+                                <Separator/>
+
+                                <ItemsControl ItemsSource="{Binding Exercises}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Name}" Margin="5,0,0,0"/>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                
+                                <Separator/>
+                                
+                                <Button Content="Delete" Click="DeleteWorkout_Click" Tag="{Binding WorkoutID}" Background="Red" Foreground="White" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Page>
