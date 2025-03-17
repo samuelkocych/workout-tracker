@@ -50,7 +50,21 @@ namespace WorkoutTrackerApp
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            if (sender is Button btn && btn.Tag is int workoutId)
+            {
+                var query = from w in db.Workouts
+                            where w.WorkoutID == workoutId
+                            select w;
 
+                var workoutToDelete = query.FirstOrDefault();
+
+                if (workoutToDelete != null)
+                {
+                    db.Workouts.Remove(workoutToDelete);
+                    db.SaveChanges();
+                    LoadWorkouts(); // Aktualizace UI
+                }
+            }
         }
     }
 }

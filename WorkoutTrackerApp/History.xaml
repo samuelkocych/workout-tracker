@@ -19,7 +19,7 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Padding="10" Margin="10" Width="">
+                        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Padding="10" Margin="10" Width="320">
                             <StackPanel>
                                 <TextBlock Text="{Binding Name}" FontSize="18" FontWeight="Bold"/>
                                 <TextBlock Text="{Binding Date, StringFormat='yyyy-MM-dd'}" FontSize="14" Foreground="Gray"/>
