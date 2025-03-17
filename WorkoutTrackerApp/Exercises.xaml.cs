@@ -28,7 +28,7 @@ namespace WorkoutTrackerApp
         private async void LoadExercises()
         {
             List<ExerciseApi> exercises = await FetchData.GetExercisesAsync();
-            ExerciseList.ItemsSource = exercises;
+            lbxExercises.ItemsSource = exercises;
         }
     }
 }
