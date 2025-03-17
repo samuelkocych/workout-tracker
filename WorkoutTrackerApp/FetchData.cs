@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace WorkoutTrackerApp
 {
-    public class ExerciseApi
+    internal class FetchData
     {
-
     }
 }
