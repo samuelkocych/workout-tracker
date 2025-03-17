@@ -8,6 +8,7 @@ namespace WorkoutTrackerApp
 {
     public class ExerciseApi
     {
-
+        public string Name { get; set; }
+        public string Instructions { get; set; }
     }
 }

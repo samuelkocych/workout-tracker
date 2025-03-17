@@ -110,6 +110,7 @@
     <Compile Include="Exercises.xaml.cs">
       <DependentUpon>Exercises.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FetchData.cs" />
     <Compile Include="History.xaml.cs">
       <DependentUpon>History.xaml</DependentUpon>
     </Compile>

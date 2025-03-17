@@ -23,6 +23,12 @@ namespace WorkoutTrackerApp
         public Exercises()
         {
             InitializeComponent();
+            LoadExercises();
+        }
+        private async void LoadExercises()
+        {
+            List<ExerciseApi> exercises = await FetchData.GetExercisesAsync();
+            ExerciseList.ItemsSource = exercises;
         }
     }
 }
