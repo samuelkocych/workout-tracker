@@ -21,7 +21,6 @@
             <TextBlock Name="tblkNewTraining" Text="➕ NEW TRAINING" MouseDown="tblkNewTraining_MouseDown" Margin="10" Cursor="Hand"/>
             <TextBlock Name="tblkHistory" Text="📜 HISTORY" MouseDown="tblkHistory_MouseDown" Margin="10" Cursor="Hand"/>
             <TextBlock Name="tblkExercises" Text="💪 EXERCISES" MouseDown="tblkExercises_MouseDown" Margin="10" Cursor="Hand"/>
-            <TextBlock Name="tblkProgress" Text="📊 PROGRESS" MouseDown="tblkProgress_MouseDown" Margin="10" Cursor="Hand"/>
         </StackPanel>
 
         <Frame Name="mainFrame" Grid.Column="1" Source="Home.xaml" NavigationUIVisibility="Hidden"/>
