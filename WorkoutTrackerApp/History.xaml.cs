@@ -26,9 +26,10 @@ namespace WorkoutTrackerApp
         public History()
         {
             InitializeComponent();
-            LoadWorkouts(); //method to load workouts
+            LoadWorkouts(); 
         }
 
+        //method to load workouts
         public void LoadWorkouts()
         {
             try
