@@ -50,6 +50,7 @@ namespace WorkoutTrackerApp
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            // check if sender is a button and has integer ID
             if (sender is Button btn && btn.Tag is int workoutId)
             {
                 var query = from w in db.Workouts
@@ -58,11 +59,12 @@ namespace WorkoutTrackerApp
 
                 var workoutToDelete = query.FirstOrDefault();
 
+                // if workout is find, delete it from the database
                 if (workoutToDelete != null)
                 {
                     db.Workouts.Remove(workoutToDelete);
                     db.SaveChanges();
-                    LoadWorkouts(); // Aktualizace UI
+                    LoadWorkouts();
                 }
             }
         }
