@@ -25,19 +25,29 @@ namespace WorkoutTrackerApp
             InitializeComponent();
         }
        
-        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        private async void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             string muscle = tbxSearch.Text.Trim().ToLower();
 
-            if (!string.IsNullOrEmpty(muscle) )
+            if (!string.IsNullOrEmpty(muscle))
             {
                 List<ExerciseApi> exercises = await FetchData.GetExercisesAsync(muscle);
                 lbxExercises.ItemsSource = exercises;
+
+                if (exercises.Any())
+                {
+                    lbxExercises.ItemsSource = exercises;
+                }
+                else
+                {
+                    MessageBox.Show("No exercise found for this muscle!");
+                }
             }
             else
             {
                 MessageBox.Show("Enter muscle name you want to train!");
             }
+
         }
     }
 }

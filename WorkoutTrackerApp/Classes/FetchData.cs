@@ -12,15 +12,16 @@ namespace WorkoutTrackerApp
     public class FetchData
     {
         private static readonly HttpClient client = new HttpClient();
-        private const string API_URL = "https://api.api-ninjas.com/v1/exercises?limit=50";
+        private const string API_URL = "https://api.api-ninjas.com/v1/exercises";
         private const string API_KEY = "Xh/3LZxxts/F28xfqFhQzg==b6JewwBFMZ2fAiKG";
 
         public static async Task<List<ExerciseApi>> GetExercisesAsync(string muscle)
         {
+            client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("X-Api-Key", API_KEY);
-            HttpResponseMessage response = await client.GetAsync(API_URL);
 
             string requestUrl = $"{API_URL}?muscle={muscle}";
+            HttpResponseMessage response = await client.GetAsync(requestUrl);
 
             if (response.IsSuccessStatusCode)
             {
