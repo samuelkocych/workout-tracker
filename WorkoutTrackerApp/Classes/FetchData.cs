@@ -15,10 +15,12 @@ namespace WorkoutTrackerApp
         private const string API_URL = "https://api.api-ninjas.com/v1/exercises?limit=50";
         private const string API_KEY = "Xh/3LZxxts/F28xfqFhQzg==b6JewwBFMZ2fAiKG";
 
-        public static async Task<List<ExerciseApi>> GetExercisesAsync()
+        public static async Task<List<ExerciseApi>> GetExercisesAsync(string muscle)
         {
             client.DefaultRequestHeaders.Add("X-Api-Key", API_KEY);
             HttpResponseMessage response = await client.GetAsync(API_URL);
+
+            string requestUrl = $"{API_URL}?muscle={muscle}";
 
             if (response.IsSuccessStatusCode)
             {

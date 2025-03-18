@@ -23,12 +23,21 @@ namespace WorkoutTrackerApp
         public Exercises()
         {
             InitializeComponent();
-            LoadExercises();
         }
-        private async void LoadExercises()
+       
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            List<ExerciseApi> exercises = await FetchData.GetExercisesAsync();
-            lbxExercises.ItemsSource = exercises;
+            string muscle = tbxSearch.Text.Trim().ToLower();
+
+            if (!string.IsNullOrEmpty(muscle) )
+            {
+                List<ExerciseApi> exercises = await FetchData.GetExercisesAsync(muscle);
+                lbxExercises.ItemsSource = exercises;
+            }
+            else
+            {
+                MessageBox.Show("Enter muscle name you want to train!");
+            }
         }
     }
 }
