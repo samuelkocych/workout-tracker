@@ -27,13 +27,18 @@ namespace WorkoutTrackerApp
        
         private async void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            string muscle = cbxMuscles.SelectedItem?.ToString().ToLower();
+            if (cbxMuscles.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string muscle = selectedItem.Content.ToString().ToLower();
 
-           
+
                 List<ExerciseApi> exercises = await FetchData.GetExercisesAsync(muscle);
                 lbxExercises.ItemsSource = exercises;
-
-            
+            }
+            else
+            {
+                MessageBox.Show("Please select a muscle group.");
+            }
         }
     }
 }

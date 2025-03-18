@@ -49,6 +49,10 @@ namespace WorkoutTrackerApp
             }
         }
 
+        public List<int> GetWeeklyVisits()
+        {
+
+        }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             // check if sender is a button and has integer ID
