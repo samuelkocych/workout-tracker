@@ -35,6 +35,7 @@ namespace WorkoutTrackerApp
         {
             LoadChartData();
             LoadStats();
+            NextTraining();
         }
         
         private void LoadChartData()
@@ -87,6 +88,25 @@ namespace WorkoutTrackerApp
                 tblkWeight.Text = $"{totalWeightLifted:f0} kg";
             else
                 tblkWeight.Text = $"{totalWeightLifted / 1000:f0} t";
+        }
+
+        private void NextTraining()
+        {
+            DateTime today = DateTime.Today;
+
+            var nextTraining = db.Workouts
+                .Where(w => w.Date > today)
+                .OrderBy(w => w.Date)
+                .FirstOrDefault();
+
+            if (nextTraining != null)
+            {
+                tblkNextTraining.Text = $"Next training on {nextTraining.Date:dddd, dd MMMM yyyy}";
+            }
+            else
+            {
+                tblkNextTraining.Text = "No upcoming training scheduled.";
+            }
         }
 
         private void tblkStartNewTrainnig_MouseDown(object sender, MouseButtonEventArgs e)
