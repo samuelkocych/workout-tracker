@@ -66,20 +66,9 @@
             <TextBlock  Text="Start new training!" Padding="10" HorizontalAlignment="Center"/>
         </Border>
 
-        <Grid Grid.Row="1" ShowGridLines="True" Grid.ColumnSpan="2" Margin="0,56,0,0" Grid.RowSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Border Grid.Column="0" Background="LightGray" CornerRadius="20" Margin="10">
-                <TextBlock Text="Motivational Quote" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-
-            <Border Grid.Column="1" Background="LightGray" CornerRadius="20" Margin="10">
-                <TextBlock Name="tblkNextTraining" Text="Next Training" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Border>
-        </Grid>
+        <Border Grid.Row="2" Background="LightGray" CornerRadius="20" Margin="10">
+            <TextBlock Name="tblkNextTraining" Text="Next Training" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
 
     </Grid>
 </Page>

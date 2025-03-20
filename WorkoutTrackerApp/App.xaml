@@ -4,6 +4,21 @@
              xmlns:local="clr-namespace:WorkoutTrackerApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        
+        <!-- colors -->
+        <Color x:Key="PrimaryColor">#2C3E50</Color>
+        <Color x:Key="BgColor">#ECF0F1</Color>
+        <Color x:Key="HoverColor">#34495E</Color>
+
+        <!-- sidebar text style -->
+        <Style x:Key="SidebarText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="0,10,0,10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="10"/>
+        </Style>
+        
     </Application.Resources>
 </Application>
