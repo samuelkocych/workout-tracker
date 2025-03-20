@@ -109,7 +109,7 @@ namespace WorkoutTrackerApp
             }
         }
 
-        private void tblkStartNewTrainnig_MouseDown(object sender, MouseButtonEventArgs e)
+        private void btnStartNewTraining_Click(object sender, RoutedEventArgs e)
         {
             NavigationService?.Navigate(new Uri("NewTraining.xaml", UriKind.Relative));
         }
