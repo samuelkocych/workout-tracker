@@ -74,7 +74,6 @@ namespace WorkoutTrackerApp
                 lbxExercises.Items.Add(newExercise);
             }
 
-
             // reset all values
             cmbExercises.SelectedIndex = -1;
             tbxSets.Clear();
@@ -127,7 +126,6 @@ namespace WorkoutTrackerApp
 
                 db.Workouts.Add(workout);
                 db.SaveChanges();
-
 
                 MessageBox.Show("Wokrout succesfully saved");
 
