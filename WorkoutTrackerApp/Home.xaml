@@ -40,7 +40,7 @@
                 <Border Background="LightGray" CornerRadius="10" Padding="20" Margin="5">
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBlock Text="⏳Total Time" FontWeight="Bold" Foreground="Gray" TextAlignment="Center"/>
-                        <TextBlock Text="45 min" FontWeight="Bold" TextAlignment="Center"/>
+                        <TextBlock Name="tblkTotalDuration" FontWeight="Bold" TextAlignment="Center"/>
                     </StackPanel>
                 </Border>
 

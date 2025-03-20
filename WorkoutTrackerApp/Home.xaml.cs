@@ -34,8 +34,8 @@ namespace WorkoutTrackerApp
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             LoadChartData();
+            LoadWorkoutTime();
         }
-
         
         private void LoadChartData()
         {
@@ -60,7 +60,17 @@ namespace WorkoutTrackerApp
                 Labels = new List<string> { "Week 1", "Week 2", "Week 3", "Week 4" }
             });
         }
+        
+        private void LoadWorkoutTime()
+        {
+            DateTime oneMonthAgo = DateTime.Now.AddDays(-30);
 
+            int time = db.Workouts
+                .Where(w => w.Date >= oneMonthAgo)
+                .Sum(w => w.TotalDuration);
+
+            tblkTotalDuration.Text = $"{time} min";
+        }
 
         private void tblkStartNewTrainnig_MouseDown(object sender, MouseButtonEventArgs e)
         {
