@@ -63,20 +63,30 @@ namespace WorkoutTrackerApp
         
         private void LoadStats()
         {
-            DateTime oneMonthAgo = DateTime.Now.AddDays(-30);
+            DateTime oneMonthAgo = DateTime.Now.AddDays(-28);
 
-            double totalTime = db.Workouts
+            int totalMinutes = db.Workouts
                 .Where(w => w.Date >= oneMonthAgo)
-                .Sum(w => w.TotalDuration / 60);
+                .Sum(w => w.TotalDuration);
 
-            tblkTotalDuration.Text = $"{totalTime:f2} h";
-            tblkCalories.Text = $"{totalTime * 323:f2} cal";
+            int hours = totalMinutes / 60;
+            int minutes = totalMinutes % 60;
+
+
+            tblkTotalDuration.Text = $"{hours} h {minutes} min";
+
+            double totalCalories = totalMinutes * (323.0 / 60);
+
+            tblkCalories.Text = $"{totalCalories:f0} cal";
 
             double totalWeightLifted = db.Exercises
                 .Where(e => e.Workout.Date >= oneMonthAgo)
-                .Sum(e => e.Sets * e.Reps * e.Weight); 
+                .Sum(e => e.Sets * e.Reps * e.Weight);
 
-            tblkWeight.Text = $"{totalWeightLifted / 1000 :f0} t";
+            if (totalWeightLifted < 1000)
+                tblkWeight.Text = $"{totalWeightLifted:f0} kg";
+            else
+                tblkWeight.Text = $"{totalWeightLifted / 1000:f0} t";
         }
 
         private void tblkStartNewTrainnig_MouseDown(object sender, MouseButtonEventArgs e)
