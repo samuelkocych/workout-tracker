@@ -50,15 +50,18 @@ namespace WorkoutTrackerApp
             {
                 new ColumnSeries
                 {
+                    Title = "Workouts:",
                     Values = new ChartValues<int> { 2, 3, 4, 2 },
                     DataLabels = true,
-                    LabelPoint = point => $"Week {point.X + 1}"
+                    LabelPoint = point => $"{point.Y}"
                 }
             };
 
             WorkoutChart.AxisX.Add(new Axis
             {
-                ShowLabels = false
+                Title = "Weeks",
+                Labels = new List<string> { "Week 1", "Week 2", "Week 3", "Week 4" },
+                Separator = new LiveCharts.Wpf.Separator { Step = 1 }
             });
         }
         

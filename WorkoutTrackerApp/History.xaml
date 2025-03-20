@@ -19,21 +19,15 @@
 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Padding="10" Margin="10" Width="320" Height="250">
+                        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Padding="10" Margin="10" Width="300" Height="250" HorizontalAlignment="Center">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
-                                    <!-- name -->
                                     <RowDefinition Height="Auto"/>
-                                    <!-- date -->
                                     <RowDefinition Height="Auto"/>
-                                    <!-- separator -->
                                     <RowDefinition Height="*"/>
-                                    <!-- exercise list -->
                                     <RowDefinition Height="Auto"/>
-                                    <!-- separator -->
                                     <RowDefinition Height="Auto"/>
-                                    <!-- delete button -->
                                 </Grid.RowDefinitions>
 
                                 <TextBlock Grid.Row="0" Text="{Binding Name}" FontSize="18" FontWeight="Bold"/>

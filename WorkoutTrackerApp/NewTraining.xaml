@@ -65,7 +65,7 @@
                 <TextBox Name="tbxWeight" Width="100"/>
             </StackPanel>
 
-            <Button Name="btnAddExercise" Content="Add" Width="100" Height="20" Margin="15,8,15,8" VerticalAlignment="Bottom" Click="btnAddExercise_Click"/>
+            <Button Name="btnAddExercise" Content="Add" Width="100" Height="30" Margin="15,8,15,8" VerticalAlignment="Bottom" Click="btnAddExercise_Click"/>
         </StackPanel>
 
         <ListBox Name="lbxExercises" Grid.Row="2" Margin="10" HorizontalContentAlignment="Stretch">

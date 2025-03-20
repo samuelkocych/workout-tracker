@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- sidebar -->
-        <StackPanel Background="{DynamicResource MaterialDesignDarkSeparatorBackground}" Width="220">
+        <StackPanel Background="{DynamicResource MaterialDesignDarkSeparatorBackground}" Width="200">
             <Button Name="btnHome" Content="🏠 HOME" Style="{StaticResource SidebarButtonStyle}" Click="btnHome_Click"/>
             <Button Name="btnNewTraining" Content="➕ NEW TRAINING" Style="{StaticResource SidebarButtonStyle}" Click="btnNewTraining_Click"/>
             <Button Name="btnHistory" Content="📜 HISTORY" Style="{StaticResource SidebarButtonStyle}" Click="btnHistory_Click"/>

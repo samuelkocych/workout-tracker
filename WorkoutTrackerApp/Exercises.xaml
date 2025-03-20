@@ -38,7 +38,7 @@
             <ListBox Name="lbxExercises">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="1" Padding="10" Margin="5" Width="1000">
+                        <Border BorderBrush="Black" BorderThickness="1" Padding="10" Margin="5" Width="900" HorizontalAlignment="Center">
                             <StackPanel Margin="10">
                                 <TextBlock FontSize="18" FontWeight="Bold" Text="{Binding Name}"/>
                                 <TextBlock FontSize="14" Text="{Binding Instructions}" TextWrapping="Wrap"/>
