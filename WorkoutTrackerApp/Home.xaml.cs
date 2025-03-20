@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using WorkoutTrackerApp.Classes;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System.Data.Entity;
-using System.Threading.Tasks;
-using System.Windows.Threading;
-using WorkoutTrackerApp.Classes;
+
 
 namespace WorkoutTrackerApp
 {
@@ -24,85 +31,33 @@ namespace WorkoutTrackerApp
             InitializeComponent();
         }
 
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            await Task.Delay(100); // Počkáme na inicializaci XAML
-
-            if (WorkoutChart == null)
-            {
-                MessageBox.Show("WorkoutChart is NULL!");
-                return;
-            }
-
             LoadChartData();
         }
 
-        public List<int> GetWeeklyVisits()
-        {
-            using (db)
-            {
-                if (db == null)
-                {
-                    MessageBox.Show("Database context is null!");
-                    return new List<int> { 0, 0, 0, 0 };
-                }
-
-                if (db.Workouts == null || !db.Workouts.Any())
-                {
-                    return new List<int> { 0, 0, 0, 0 };
-                }
-
-                DateTime today = DateTime.Today;
-                DateTime start = today.AddDays(-28); // poslední 4 týdny
-
-                var query = db.Workouts
-                            .Where(w => w.Date >= start)
-                            .GroupBy(w => DbFunctions.DiffDays(start, w.Date) / 7)
-                            .OrderBy(g => g.Key)
-                            .Select(g => g.Count())
-                            .ToList();
-
-                while (query.Count < 4)
-                {
-                    query.Insert(0, 0); // doplnění nul, pokud chybí týdny
-                }
-
-                return query;
-            }
-        }
-
+        
         private void LoadChartData()
         {
             if (WorkoutChart == null)
             {
-                MessageBox.Show("WorkoutChart is NULL!");
+                MessageBox.Show("Workout chart is null!");
                 return;
             }
 
-            if (WorkoutChart.Series == null)
+            WorkoutChart.Series = new SeriesCollection
             {
-                WorkoutChart.Series = new SeriesCollection();
-            }
-
-            List<int> workoutCounts = GetWeeklyVisits();
-
-            Dispatcher.Invoke(() =>
-            {
-                WorkoutChart.Series.Clear();
-                WorkoutChart.Series.Add(new ColumnSeries
+                new ColumnSeries
                 {
                     Title = "Workouts",
-                    Values = new ChartValues<int>(workoutCounts)
-                });
-
-                if (WorkoutChart.AxisX.Count == 0)
-                {
-                    WorkoutChart.AxisX.Add(new Axis
-                    {
-                        Title = "Weeks",
-                        Labels = new List<string> { "Week 1", "Week 2", "Week 3", "Week 4" }
-                    });
+                    Values = new ChartValues<int> { 2, 3, 4, 5 }
                 }
+            };
+
+            WorkoutChart.AxisX.Add(new Axis
+            {
+                Title = "Weeks",
+                Labels = new List<string> { "Week 1", "Week 2", "Week 3", "Week 4" }
             });
         }
     }
