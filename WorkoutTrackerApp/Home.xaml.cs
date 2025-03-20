@@ -34,7 +34,7 @@ namespace WorkoutTrackerApp
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             LoadChartData();
-            LoadWorkoutTime();
+            LoadStats();
         }
         
         private void LoadChartData()
@@ -61,15 +61,22 @@ namespace WorkoutTrackerApp
             });
         }
         
-        private void LoadWorkoutTime()
+        private void LoadStats()
         {
             DateTime oneMonthAgo = DateTime.Now.AddDays(-30);
 
-            int time = db.Workouts
+            double totalTime = db.Workouts
                 .Where(w => w.Date >= oneMonthAgo)
-                .Sum(w => w.TotalDuration);
+                .Sum(w => w.TotalDuration / 60);
 
-            tblkTotalDuration.Text = $"{time} min";
+            tblkTotalDuration.Text = $"{totalTime:f2} h";
+            tblkCalories.Text = $"{totalTime * 323:f2} cal";
+
+            double totalWeightLifted = db.Exercises
+                .Where(e => e.Workout.Date >= oneMonthAgo)
+                .Sum(e => e.Sets * e.Reps * e.Weight); 
+
+            tblkWeight.Text = $"{totalWeightLifted / 1000 :f0} t";
         }
 
         private void tblkStartNewTrainnig_MouseDown(object sender, MouseButtonEventArgs e)
