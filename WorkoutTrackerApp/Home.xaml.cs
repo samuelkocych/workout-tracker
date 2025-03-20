@@ -50,7 +50,7 @@ namespace WorkoutTrackerApp
                 new ColumnSeries
                 {
                     Title = "Workouts",
-                    Values = new ChartValues<int> { 2, 3, 4, 5 }
+                    Values = new ChartValues<int> { 2, 3, 4, 2 }
                 }
             };
 
@@ -59,6 +59,12 @@ namespace WorkoutTrackerApp
                 Title = "Weeks",
                 Labels = new List<string> { "Week 1", "Week 2", "Week 3", "Week 4" }
             });
+        }
+
+
+        private void tblkStartNewTrainnig_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService?.Navigate(new Uri("NewTraining.xaml", UriKind.Relative));
         }
     }
 }
