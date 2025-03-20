@@ -2,23 +2,15 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WorkoutTrackerApp"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        
-        <!-- colors -->
-        <Color x:Key="PrimaryColor">#2C3E50</Color>
-        <Color x:Key="BgColor">#ECF0F1</Color>
-        <Color x:Key="HoverColor">#34495E</Color>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="DeepPurple" SecondaryColor="Lime" />
 
-        <!-- sidebar text style -->
-        <Style x:Key="SidebarText" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Margin" Value="0,10,0,10"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Padding" Value="10"/>
-        </Style>
-        
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign2.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

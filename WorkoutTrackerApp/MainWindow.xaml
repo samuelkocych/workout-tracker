@@ -16,15 +16,15 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Sidebar -->
-        <StackPanel Background="CadetBlue" Width="220">
-            <TextBlock Name="tblkHome" Text="🏠 HOME" Style="{DynamicResource SidebarText}" MouseDown="tblkHome_MouseDown"/>
-            <TextBlock Name="tblkNewTraining" Text="➕ NEW TRAINING" Style="{DynamicResource SidebarText}" MouseDown="tblkNewTraining_MouseDown"/>
-            <TextBlock Name="tblkHistory" Text="📜 HISTORY" Style="{DynamicResource SidebarText}" MouseDown="tblkHistory_MouseDown"/>
-            <TextBlock Name="tblkExercises" Text="💪 EXERCISES" Style="{DynamicResource SidebarText}" MouseDown="tblkExercises_MouseDown"/>
+        <!-- sidebar -->
+        <StackPanel Background="{DynamicResource MaterialDesignPape}" Width="220">
+            <Button Name="btnHome" Content="🏠 HOME" Style="{StaticResource MaterialDesignFlatButton}" Click="btnHome_Click"/>
+            <Button Name="btnNewTraining" Content="➕ NEW TRAINING" Style="{StaticResource MaterialDesignFlatButton}" Click="btnNewTraining_Click"/>
+            <Button Name="btnHistory" Content="📜 HISTORY" Style="{StaticResource MaterialDesignFlatButton}" Click="btnHistory_Click"/>
+            <Button Name="btnExercises" Content="💪 EXERCISES" Style="{StaticResource MaterialDesignFlatButton}" Click="btnExercises_Click"/>
         </StackPanel>
 
-        <!-- Main content -->
+        <!-- main content -->
         <Frame Name="mainFrame" Grid.Column="1" Source="Home.xaml" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

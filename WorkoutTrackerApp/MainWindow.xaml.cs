@@ -44,5 +44,25 @@ namespace WorkoutTrackerApp
         {
             mainFrame.NavigationService.Navigate(new Uri("Exercises.xaml", UriKind.Relative));
         }
+
+        private void btnExercises_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnHistory_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnNewTraining_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnHome_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
