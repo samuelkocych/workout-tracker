@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WorkoutTrackerApp"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1200"
       Title="Home" Loaded="Page_Loaded">
@@ -23,12 +24,12 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Chart -->
-            <Border Margin="10" BorderBrush="LightGray" BorderThickness="2" CornerRadius="20">
-                <lvc:CartesianChart Name="WorkoutChart" Margin="20"/>
-            </Border>
+            <!-- chart -->
+            <materialDesign:Card Margin="10" Padding="20">
+                <lvc:CartesianChart Name="WorkoutChart" Margin="10"/>
+            </materialDesign:Card>
 
-            <!-- Stats -->
+            <!-- stats -->
             <Grid Grid.Column="1" ShowGridLines="True" Margin="10">
 
                 <Grid.RowDefinitions>
@@ -57,15 +58,15 @@
                         <TextBlock Name="tblkWeight" FontWeight="Bold" TextAlignment="Center"/>
                     </StackPanel>
                 </Border>
-
             </Grid>
-
         </Grid>
 
+        <!-- start new trainning button -->
         <Border Name="tblkStartNewTrainnig" Grid.Row="1" Background="LightGray" CornerRadius="20" Margin="10,10,10,10" Grid.ColumnSpan="2" MouseDown="tblkStartNewTrainnig_MouseDown" Cursor="Hand">
             <TextBlock  Text="Start new training!" Padding="10" HorizontalAlignment="Center"/>
         </Border>
 
+         <!-- next training scheduled -->
         <Border Grid.Row="2" Background="LightGray" CornerRadius="20" Margin="10">
             <TextBlock Name="tblkNextTraining" Text="Next Training" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Border>
