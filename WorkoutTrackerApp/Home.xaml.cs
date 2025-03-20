@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace WorkoutTrackerApp
 {
     /// <summary>
@@ -23,5 +24,23 @@ namespace WorkoutTrackerApp
         {
             InitializeComponent();
         }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            public ISeries[] Series { get; set; } =
+            [
+                new ColumnSeries<int>
+                {
+                    Name = "Počet tréninků",
+                    Values = [5, 7, 6, 8] // Počet tréninků za týden 1-4
+                }
+            ];
+        }
+   
     }
 }
