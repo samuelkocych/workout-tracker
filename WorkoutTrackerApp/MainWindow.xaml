@@ -18,10 +18,10 @@
 
         <!-- sidebar -->
         <StackPanel Background="{DynamicResource MaterialDesignPape}" Width="220">
-            <Button Name="btnHome" Content="🏠 HOME" Style="{StaticResource MaterialDesignFlatButton}" Click="btnHome_Click"/>
-            <Button Name="btnNewTraining" Content="➕ NEW TRAINING" Style="{StaticResource MaterialDesignFlatButton}" Click="btnNewTraining_Click"/>
-            <Button Name="btnHistory" Content="📜 HISTORY" Style="{StaticResource MaterialDesignFlatButton}" Click="btnHistory_Click"/>
-            <Button Name="btnExercises" Content="💪 EXERCISES" Style="{StaticResource MaterialDesignFlatButton}" Click="btnExercises_Click"/>
+            <Button Name="btnHome" Content="🏠 HOME" Style="{StaticResource SidebarButtonStyle}" Click="btnHome_Click"/>
+            <Button Name="btnNewTraining" Content="➕ NEW TRAINING" Style="{StaticResource SidebarButtonStyle}" Click="btnNewTraining_Click"/>
+            <Button Name="btnHistory" Content="📜 HISTORY" Style="{StaticResource SidebarButtonStyle}" Click="btnHistory_Click"/>
+            <Button Name="btnExercises" Content="💪 EXERCISES" Style="{StaticResource SidebarButtonStyle}" Click="btnExercises_Click"/>
         </StackPanel>
 
         <!-- main content -->
