@@ -23,8 +23,8 @@
 
             <!-- start training button -->
             <Style x:Key="StartTrainingButtonStyle" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
-                <Setter Property="Margin" Value="10"/>
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Margin" Value="20,30,20,0"/>
+                <Setter Property="FontSize" Value="25"/>
                 <Setter Property="Foreground" Value="White"/>
                 <Setter Property="Background" Value="{DynamicResource MaterialDesignPrimary}"/>
                 <Setter Property="Padding" Value="14"/>
@@ -45,6 +45,7 @@
                 <Setter Property="Padding" Value="20"/>
                 <Setter Property="Margin" Value="10"/>
                 <Setter Property="Background" Value="{DynamicResource MaterialDesignCardBackground}"/>
+                <Setter Property="UniformCornerRadius" Value="20"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>
