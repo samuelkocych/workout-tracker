@@ -9,11 +9,7 @@
       Title="Exercises">
 
     <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
-
-        
-
-        <StackPanel Width="auto" Margin="10">
-
+        <StackPanel Width="auto" Margin="10" HorizontalAlignment="Center">
             <ComboBox Name="cbxMuscles" Width="300" Height="30" Margin="5">
                 <ComboBoxItem Content="Abdominals"/>
                 <ComboBoxItem Content="Abductors"/>

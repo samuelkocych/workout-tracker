@@ -48,9 +48,11 @@
                 <Setter Property="UniformCornerRadius" Value="20"/>
             </Style>
 
+            <!-- labels -->
             <Style TargetType="Label">
                 <Setter Property="FontWeight" Value="Bold"/>
             </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

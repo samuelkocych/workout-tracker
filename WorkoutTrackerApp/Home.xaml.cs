@@ -85,6 +85,7 @@ namespace WorkoutTrackerApp
         
         private void LoadStats()
         {
+           
             DateTime oneMonthAgo = DateTime.Now.AddDays(-28);
 
             int totalMinutes = db.Workouts
