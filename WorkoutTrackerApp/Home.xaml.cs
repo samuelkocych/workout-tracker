@@ -45,6 +45,12 @@ namespace WorkoutTrackerApp
             // get days since monday, if sunday set to 6  
             int daysSinceMonday = today.DayOfWeek == DayOfWeek.Sunday ? 6 : (int)today.DayOfWeek - (int)DayOfWeek.Monday;
 
+            DateTime currentMonday = today.AddDays(-daysSinceMonday);
+
+            var weeklyWorkouts = new int[4];
+
+
+            var weeklyTraining = new int[4];
 
             WorkoutChart.Series = new SeriesCollection
             {
