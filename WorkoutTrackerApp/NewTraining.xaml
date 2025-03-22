@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WorkoutTrackerApp"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="NewTraining" Loaded="Page_Loaded">
@@ -88,8 +89,12 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Text="{Binding}" VerticalAlignment="Center" FontSize="14"/>
-                            <Button Grid.Column="1" Name="btnEditExercise" Content="Edit" Click="btnEditExercise_Click" Width="60" Margin="5"/>
-                            <Button Grid.Column="2" Name="btnDeleteExercise" Content="Delete" Click="btnDeleteExercise_Click" Width="60" Margin="5"/>
+                            <Button Grid.Column="1" Name="btnEditExercise" Content="Edit" Click="btnEditExercise_Click" Tag="{Binding}" Width="100" Margin="5"/>
+                            <Button Grid.Column="2" Width="50" Height="50" Background="Transparent" BorderThickness="0" Click="btnDeleteExercise_Click" Tag="{Binding}" Padding="5">
+                                <materialDesign:PackIcon Kind="Delete" Width="30" Height="30" Foreground="Red"/>
+                            </Button>
+
+
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

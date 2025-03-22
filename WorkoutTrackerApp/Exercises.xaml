@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WorkoutTrackerApp"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Exercises">
@@ -34,7 +35,7 @@
             <ListBox Name="lbxExercises">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Black" BorderThickness="1" Padding="10" Margin="5" Width="900" HorizontalAlignment="Center">
+                        <Border BorderBrush="Black" BorderThickness="1" Padding="10" Margin="5" HorizontalAlignment="Stretch" CornerRadius="10">
                             <StackPanel Margin="10">
                                 <TextBlock FontSize="18" FontWeight="Bold" Text="{Binding Name}"/>
                                 <TextBlock FontSize="14" Text="{Binding Instructions}" TextWrapping="Wrap"/>

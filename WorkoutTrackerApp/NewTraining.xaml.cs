@@ -92,15 +92,20 @@ namespace WorkoutTrackerApp
 
         private void btnDeleteExercise_Click(object sender, RoutedEventArgs e)
         {
-            if (lbxExercises.SelectedItem != null)
+            Button btn = sender as Button;
+            Exercise exerciseToDelete = btn?.Tag as Exercise; // using '?' prevents null reference errors
+
+            if (exerciseToDelete != null)
             {
-                lbxExercises.Items.Remove(lbxExercises.SelectedItem);
+                lbxExercises.Items.Remove(exerciseToDelete);
             }
         }
 
         private void btnEditExercise_Click(object sender, RoutedEventArgs e)
         {
-            Exercise selectedExercise = lbxExercises.SelectedItem as Exercise;
+            Button btn = sender as Button;
+            Exercise selectedExercise = btn?.Tag as Exercise;
+
 
             if (selectedExercise != null)
             {
