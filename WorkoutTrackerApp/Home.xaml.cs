@@ -47,17 +47,28 @@ namespace WorkoutTrackerApp
 
             DateTime currentMonday = today.AddDays(-daysSinceMonday);
 
-            var weeklyWorkouts = new int[4];
+            int[] weeklyWorkouts = new int [4];
 
+            for (int i = 0; i < 4; i++)
+            {
+                // calculate start and end of each week
+                DateTime monday = currentMonday.AddDays(-((3 - i) * 7));
+                DateTime sunday = monday.AddDays(6).AddHours(23).AddMinutes(59).AddSeconds(59); // whole sunday
 
-            var weeklyTraining = new int[4];
+                // get number of workouts in this week
+                int workoutCount = db.Workouts
+                    .Where(w => w.Date >= monday && w.Date <= sunday)
+                    .Count();
+
+                weeklyWorkouts[i] = workoutCount;
+            }
 
             WorkoutChart.Series = new SeriesCollection
             {
                 new ColumnSeries
                 {
-                    Title = "Workouts:",
-                    Values = new ChartValues<int> { 2, 3, 4, 2 },
+                    Title = "Workouts per week",
+                    Values = new ChartValues<int>(weeklyWorkouts),
                     DataLabels = true,
                     LabelPoint = point => $"{point.Y}"
                 }
