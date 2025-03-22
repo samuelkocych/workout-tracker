@@ -55,6 +55,8 @@ namespace WorkoutTrackerApp
                 return;
             }
 
+
+
             string name = ((ComboBoxItem)cmbExercises.SelectedItem).Content.ToString();
            
             Exercise selectedExercise = lbxExercises.SelectedItem as Exercise;
@@ -139,6 +141,11 @@ namespace WorkoutTrackerApp
             {
                 MessageBox.Show("An error occured", ex.Message);
             }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            dpDatePicker.SelectedDate = DateTime.Today;
         }
     }
 }
