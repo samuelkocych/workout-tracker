@@ -47,6 +47,10 @@
                 <Setter Property="Background" Value="{DynamicResource MaterialDesignCardBackground}"/>
                 <Setter Property="UniformCornerRadius" Value="20"/>
             </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
