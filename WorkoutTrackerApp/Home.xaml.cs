@@ -42,22 +42,22 @@ namespace WorkoutTrackerApp
         {
             DateTime today = DateTime.Today;
 
-            // get days since monday, if sunday set to 6  
-            int daysSinceMonday = today.DayOfWeek == DayOfWeek.Sunday ? 6 : (int)today.DayOfWeek - (int)DayOfWeek.Monday;
+            // get days since last sunday
+            int daysSinceSunday= (int) today.DayOfWeek;
 
-            DateTime currentMonday = today.AddDays(-daysSinceMonday);
+            DateTime currentSunday = today.AddDays(-daysSinceSunday);
 
             int[] weeklyWorkouts = new int [4];
 
             for (int i = 0; i < 4; i++)
             {
                 // calculate start and end of each week
-                DateTime monday = currentMonday.AddDays(-((3 - i) * 7));
-                DateTime sunday = monday.AddDays(6).AddHours(23).AddMinutes(59).AddSeconds(59); // whole sunday
+                DateTime sunday = currentSunday.AddDays(-((3 - i) * 7));
+                DateTime saturday = sunday.AddDays(6).AddHours(23).AddMinutes(59).AddSeconds(59); // whole saturday
 
                 // get number of workouts in this week
                 int workoutCount = db.Workouts
-                    .Where(w => w.Date >= monday && w.Date <= sunday)
+                    .Where(w => w.Date >= sunday && w.Date <= saturday)
                     .Count();
 
                 weeklyWorkouts[i] = workoutCount;
@@ -70,14 +70,15 @@ namespace WorkoutTrackerApp
                     Title = "Workouts per week",
                     Values = new ChartValues<int>(weeklyWorkouts),
                     DataLabels = true,
-                    LabelPoint = point => $"{point.Y}"
+                    LabelPoint = point => $"{point.Y}" // lambda function to display Y value as label on chart points  
                 }
             };
 
+            WorkoutChart.AxisX.Clear();
             WorkoutChart.AxisX.Add(new Axis
             {
                 Title = "Weeks",
-                Labels = new List<string> { "Week 1", "Week 2", "Week 3", "Week 4" },
+                Labels = new List<string> { "3 weeks ago", "2 weeks ago", "Last week", "This week" },
                 Separator = new LiveCharts.Wpf.Separator { Step = 1 }
             });
         }
