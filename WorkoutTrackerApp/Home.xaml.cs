@@ -40,11 +40,11 @@ namespace WorkoutTrackerApp
         
         private void LoadChartData()
         {
-            if (WorkoutChart == null)
-            {
-                MessageBox.Show("Workout chart is null!");
-                return;
-            }
+            DateTime today = DateTime.Today;
+
+            // get days since monday, if sunday set to 6  
+            int daysSinceMonday = today.DayOfWeek == DayOfWeek.Sunday ? 6 : (int)today.DayOfWeek - (int)DayOfWeek.Monday;
+
 
             WorkoutChart.Series = new SeriesCollection
             {

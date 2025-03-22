@@ -29,6 +29,11 @@ namespace WorkoutTrackerApp
             InitializeComponent();
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            dpDatePicker.SelectedDate = DateTime.Today;
+        }
+
         private void btnAddExercise_Click(object sender, RoutedEventArgs e)
         {
             if (cmbExercises.SelectedItem == null)
@@ -141,11 +146,6 @@ namespace WorkoutTrackerApp
             {
                 MessageBox.Show("An error occured", ex.Message);
             }
-        }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            dpDatePicker.SelectedDate = DateTime.Today;
         }
     }
 }
