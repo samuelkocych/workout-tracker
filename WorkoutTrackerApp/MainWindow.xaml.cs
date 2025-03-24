@@ -26,7 +26,7 @@ namespace WorkoutTrackerApp
         {
             if (sender is Button button && button.Tag is string page)
             {
-                mainFrame.Navigate(new Uri(page, UriKind.Relative));
+                mainFrame.Navigate(new Uri("Pages/" + page, UriKind.Relative));
             }
         }
     }

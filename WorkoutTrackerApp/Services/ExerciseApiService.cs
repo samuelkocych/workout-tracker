@@ -6,23 +6,27 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using WorkoutTrackerApp.Interfaces;
 
-namespace WorkoutTrackerApp
+namespace WorkoutTrackerApp.Services
 {
     // handles API requests for fetching exercises
-    public class FetchData
+    public class ExerciseApiService : IExerciseApiService
     {
-        private static readonly HttpClient client = new HttpClient();
+        private readonly HttpClient _client;
         private const string API_URL = "https://api.api-ninjas.com/v1/exercises";
         private const string API_KEY = "Xh/3LZxxts/F28xfqFhQzg==b6JewwBFMZ2fAiKG";
 
-        public static async Task<List<ExerciseApi>> GetExercisesAsync(string muscle)
+        public ExerciseApiService(HttpClient client)
         {
-            client.DefaultRequestHeaders.Clear();
-            client.DefaultRequestHeaders.Add("X-Api-Key", API_KEY);
+            _client = new HttpClient();
+            _client.DefaultRequestHeaders.Add("X-Api-Key", API_KEY);
+        }
 
+        public async Task<List<ExerciseApi>> GetExercisesAsync(string muscle)
+        {
             string requestUrl = $"{API_URL}?muscle={muscle}";
-            HttpResponseMessage response = await client.GetAsync(requestUrl);
+            HttpResponseMessage response = await _client.GetAsync(requestUrl);
 
             if (response.IsSuccessStatusCode)
             {

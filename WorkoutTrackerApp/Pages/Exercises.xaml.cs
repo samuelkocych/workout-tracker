@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.Entity;
+using WorkoutTrackerApp.Services;
 
 
 namespace WorkoutTrackerApp
@@ -32,18 +33,16 @@ namespace WorkoutTrackerApp
             {
                 string muscle = selectedItem.Content.ToString().ToLower();
 
-
                 try
                 {
-                    List<ExerciseApi> exercises = await FetchData.GetExercisesAsync(muscle);
+                    ExerciseApiService exerciseService = new ExerciseApiService();
+                    List<ExerciseApi> exercises = await exerciseService.GetExercisesAsync(muscle);
                     lbxExercises.ItemsSource = exercises;
                 }
                 catch (Exception ex)
                 {
                     CustomMessageBox.Show($"Error fetching exercises: {ex.Message}");
                 }
-
-               
             }
             else
             {

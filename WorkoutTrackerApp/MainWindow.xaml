@@ -25,6 +25,6 @@
         </StackPanel>
 
         <!-- main content -->
-        <Frame Name="mainFrame" Grid.Column="1" Source="Home.xaml" NavigationUIVisibility="Hidden"/>
+        <Frame Name="mainFrame" Grid.Column="1" Source="Pages/Home.xaml" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
