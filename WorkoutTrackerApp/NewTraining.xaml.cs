@@ -17,9 +17,6 @@ using WorkoutTrackerApp.Classes;
 
 namespace WorkoutTrackerApp
 {
-    /// <summary>
-    /// Interaction logic for NewTraining.xaml
-    /// </summary>
     public partial class NewTraining : Page
     {
         WorkoutData db = new WorkoutData(); // database instance
@@ -36,10 +33,12 @@ namespace WorkoutTrackerApp
 
         private void btnAddExercise_Click(object sender, RoutedEventArgs e)
         {
-            // check if exercise is selected
-            if (cmbExercises.SelectedItem == null)
+            // validate name input
+            string name = tbxName.Text.Trim();
+
+            if (string.IsNullOrEmpty(name))
             {
-                CustomMessageBox.Show("Please select an exercise");
+                CustomMessageBox.Show("Please enter an exercise name.");
                 return;
             }
 
@@ -63,8 +62,6 @@ namespace WorkoutTrackerApp
                 CustomMessageBox.Show("Please enter a valid weight.");
                 return;
             }
-
-            string name = ((ComboBoxItem)cmbExercises.SelectedItem).Content.ToString(); // get exercise name
 
             // check if editing an existing exercise
             Exercise selectedExercise = lbxExercises.SelectedItem as Exercise;
@@ -104,14 +101,12 @@ namespace WorkoutTrackerApp
             if (selectedExercise != null)
             {
                 // load exercise details into inputs
+                tbxName.Text = selectedExercise.Name;
                 tbxSets.Text = selectedExercise.Sets.ToString();
                 tbxReps.Text = selectedExercise.Reps.ToString();
                 tbxWeight.Text = selectedExercise.Weight.ToString();
 
-                //this code finds the combo box item whose content matches the exercise name and sets it as the selected item in the combo box
-                cmbExercises.SelectedItem = cmbExercises.Items 
-                    .Cast<ComboBoxItem>()                          
-                    .FirstOrDefault(item => item.Content.ToString() == selectedExercise.Name); 
+                lbxExercises.SelectedItem = selectedExercise;
             }
         }
 
@@ -154,7 +149,7 @@ namespace WorkoutTrackerApp
 
         private void ResetExerciseInput()
         {
-            cmbExercises.SelectedIndex = -1;
+            tbxName.Clear();
             tbxSets.Clear();
             tbxReps.Clear();
             tbxWeight.Clear();
