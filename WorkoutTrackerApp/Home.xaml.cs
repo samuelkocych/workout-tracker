@@ -24,7 +24,7 @@ namespace WorkoutTrackerApp
     /// </summary>
     public partial class Home : Page
     {
-        WorkoutData db = new WorkoutData();
+        WorkoutData db = new WorkoutData(); // database context
 
         public Home()
         {
@@ -33,29 +33,27 @@ namespace WorkoutTrackerApp
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadChartData();
-            LoadStats();
-            NextTraining();
+            LoadChartData(); // load chart data
+            LoadStats(); // load stats
+            NextTraining(); // show next training
         }
-        
+
+        // load workout chart for last 4 weeks
         private void LoadChartData()
         {
             DateTime today = DateTime.Today;
-
-            // get days since last sunday
-            int daysSinceSunday= (int) today.DayOfWeek;
-
+            int daysSinceSunday = (int)today.DayOfWeek;
             DateTime currentSunday = today.AddDays(-daysSinceSunday);
 
             int[] weeklyWorkouts = new int [4];
 
             for (int i = 0; i < 4; i++)
             {
-                // calculate start and end of each week
+                // get week start and end
                 DateTime sunday = currentSunday.AddDays(-((3 - i) * 7));
                 DateTime saturday = sunday.AddDays(6).AddHours(23).AddMinutes(59).AddSeconds(59); // whole saturday
 
-                // get number of workouts in this week
+                // count workouts in this week
                 int workoutCount = db.Workouts
                     .Where(w => w.Date >= sunday && w.Date <= saturday)
                     .Count();
@@ -63,6 +61,7 @@ namespace WorkoutTrackerApp
                 weeklyWorkouts[i] = workoutCount;
             }
 
+            // update chart
             WorkoutChart.Series = new SeriesCollection
             {
                 new ColumnSeries
@@ -70,7 +69,6 @@ namespace WorkoutTrackerApp
                     Title = "Workouts per week",
                     Values = new ChartValues<int>(weeklyWorkouts),
                     DataLabels = true,
-                    LabelPoint = point => $"{point.Y}" // lambda function to display Y value as label on chart points  
                 }
             };
 
@@ -81,37 +79,42 @@ namespace WorkoutTrackerApp
                 Labels = new List<string> { "3 weeks ago", "2 weeks ago", "Last week", "This week" },
                 Separator = new LiveCharts.Wpf.Separator { Step = 1 }
             });
+
+            WorkoutChart.AxisY.Clear();
+            WorkoutChart.AxisY.Add(new Axis { MinValue = 0 }); // ensures no negative values
         }
-        
+
+        // load total stats for last 4 weeks
         private void LoadStats()
-        {
-           
+        {           
             DateTime oneMonthAgo = DateTime.Now.AddDays(-28);
 
+            // total workout time
             int totalMinutes = db.Workouts
                 .Where(w => w.Date >= oneMonthAgo)
-                .Sum(w => w.TotalDuration);
+                .Select(w => (int?)w.TotalDuration)
+                .Sum() ?? 0; // default 0 if no workouts
 
             int hours = totalMinutes / 60;
             int minutes = totalMinutes % 60;
+            if (tblkTotalDuration != null)
+                tblkTotalDuration.Text = $"{hours} h {minutes} min";
 
-
-            tblkTotalDuration.Text = $"{hours} h {minutes} min";
-
+            // total calories burned
             double totalCalories = totalMinutes * (323.0 / 60);
+            if (tblkCalories != null)
+                tblkCalories.Text = $"{totalCalories:f0} cal";
 
-            tblkCalories.Text = $"{totalCalories:f0} cal";
+            // total weight lifted
+            double totalWeight = db.Exercises
+                .Select(e => (double?)(e.Sets * e.Reps * e.Weight))
+                .Sum() ?? 0;
 
-            double totalWeightLifted = db.Exercises
-                .Where(e => e.Workout.Date >= oneMonthAgo)
-                .Sum(e => e.Sets * e.Reps * e.Weight);
-
-            if (totalWeightLifted < 1000)
-                tblkWeight.Text = $"{totalWeightLifted:f0} kg";
-            else
-                tblkWeight.Text = $"{totalWeightLifted / 1000:f0} t";
+            if (tblkWeight != null)
+                tblkWeight.Text = totalWeight < 1000 ? $"{totalWeight:f0} kg" : $"{totalWeight / 1000:f0} t";
         }
 
+        // show next scheduled training
         private void NextTraining()
         {
             DateTime today = DateTime.Today;
@@ -121,19 +124,15 @@ namespace WorkoutTrackerApp
                 .OrderBy(w => w.Date)
                 .FirstOrDefault();
 
-            if (nextTraining != null)
-            {
-                tblkNextTraining.Text = $"Next training on {nextTraining.Date:dddd, dd MMMM yyyy}";
-            }
-            else
-            {
-                tblkNextTraining.Text = "No upcoming training scheduled.";
-            }
+            tblkNextTraining.Text = nextTraining != null
+                ? $"Next training on {nextTraining.Date:dddd, dd MMMM yyyy}"
+                : "No upcoming training scheduled.";
         }
 
+        // navigate to new training page
         private void btnStartNewTraining_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new Uri("NewTraining.xaml", UriKind.Relative));
+            NavigationService?.Navigate(new Uri("NewTraining.xaml", UriKind.Relative)); // '?' means is only called if is not null
         }
     }
 }
