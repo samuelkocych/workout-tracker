@@ -9,7 +9,7 @@
     <Grid Margin="30">
         <StackPanel Orientation="Vertical">
             <TextBlock Name="txtMessage" Text="Message text" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
-            <Button Content="OK" Width="80" Margin="20" Name="btnOK" Click="btnOK_Click"/>
+            <Button Content="OK" Width="80" Margin="20" Name="btnOK" Click="btnOK_Click" Background="Gray"/>
         </StackPanel>
     </Grid>
 </Window>

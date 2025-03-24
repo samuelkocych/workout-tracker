@@ -44,22 +44,21 @@ namespace WorkoutTrackerApp
 
             if (!int.TryParse(tbxSets.Text, out int sets) || sets <= 0)
             {
-                MessageBox.Show("Please enter a valid number of sets");
+                CustomMessageBox.Show("Please enter a valid number of sets");
                 return;
             }
 
             if (!int.TryParse(tbxReps.Text, out int reps) || reps <= 0)
             {
-                MessageBox.Show("Please enter a valid number of reps.");
+                CustomMessageBox.Show("Please enter a valid number of reps.");
                 return;
             }
 
             if (!double.TryParse(tbxWeight.Text, out double weight) || weight < 0)
             {
-                MessageBox.Show("Please enter a valid weight.");
+                CustomMessageBox.Show("Please enter a valid weight.");
                 return;
             }
-
 
             string name = ((ComboBoxItem)cmbExercises.SelectedItem).Content.ToString();
            
@@ -137,7 +136,7 @@ namespace WorkoutTrackerApp
                 db.Workouts.Add(workout);
                 db.SaveChanges();
 
-                MessageBox.Show("Wokrout succesfully saved");
+                CustomMessageBox.Show("Wokrout succesfully saved");
 
                 // reset the form
                 tbxTrainingName.Clear();
@@ -145,9 +144,9 @@ namespace WorkoutTrackerApp
                 dpDatePicker.SelectedDate = null;
                 lbxExercises.Items.Clear();
             }
-            catch (Exception ex)
+            catch 
             {
-                MessageBox.Show("An error occured", ex.Message);
+                CustomMessageBox.Show("Fill in name, duration and date");
             }
         }
     }

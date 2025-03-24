@@ -23,15 +23,15 @@ namespace WorkoutTrackerApp
         public CustomMessageBox(string message)
         {
             InitializeComponent();
-            txtMessage.Text = message;
-            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            txtMessage.Text = message; // set message text
         }
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.Close(); // close window
         }
 
+        // show message from anywhere
         public static void Show(string message)
         {
             CustomMessageBox msgBox = new CustomMessageBox(message);
