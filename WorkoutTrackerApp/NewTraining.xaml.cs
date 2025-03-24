@@ -38,7 +38,7 @@ namespace WorkoutTrackerApp
         {
             if (cmbExercises.SelectedItem == null)
             {
-                MessageBox.Show("Please select an exercise");
+                CustomMessageBox.Show("Please select an exercise");
                 return;
             }
 
@@ -59,7 +59,6 @@ namespace WorkoutTrackerApp
                 MessageBox.Show("Please enter a valid weight.");
                 return;
             }
-
 
 
             string name = ((ComboBoxItem)cmbExercises.SelectedItem).Content.ToString();
@@ -86,7 +85,6 @@ namespace WorkoutTrackerApp
             tbxSets.Clear();
             tbxReps.Clear();
             tbxWeight.Clear();
-
             lbxExercises.SelectedItem = null;
         }
 
@@ -115,8 +113,8 @@ namespace WorkoutTrackerApp
 
                 //this code finds the combo box item whose content matches the exercise name and sets it as the selected item in the combo box
                 cmbExercises.SelectedItem = cmbExercises.Items 
-                .Cast<ComboBoxItem>()                          
-                .FirstOrDefault(item => item.Content.ToString() == selectedExercise.Name); 
+                    .Cast<ComboBoxItem>()                          
+                    .FirstOrDefault(item => item.Content.ToString() == selectedExercise.Name); 
             }
         }
 
