@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorkoutTrackerApp"
         mc:Ignorable="d"
-        Title="CustomMessageBox" Height="200" Width="400">
-    <Grid Margin="30">
+        Title="CustomMessageBox" Height="200" Width="400"
+        WindowStyle="None" 
+        WindowStartupLocation="CenterScreen" BorderBrush="Black" BorderThickness="3">
+    
+    <Grid Margin="20">
         <StackPanel Orientation="Vertical">
-            <TextBlock Name="txtMessage" Text="Message text" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+            <TextBlock Name="txtMessage" Text="Message text" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30" FontStyle="Normal"/>
             <Button Content="OK" Width="80" Margin="20" Name="btnOK" Click="btnOK_Click" Background="Gray"/>
         </StackPanel>
     </Grid>

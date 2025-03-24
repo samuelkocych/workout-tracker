@@ -25,24 +25,12 @@ namespace WorkoutTrackerApp
             InitializeComponent();
         }
 
-        private void btnHome_Click(object sender, RoutedEventArgs e)
+        private void NavigatePage(object sender, RoutedEventArgs e)
         {
-            mainFrame.NavigationService.Navigate(new Uri("Home.xaml", UriKind.Relative));
-        }
-
-        private void btnNewTraining_Click(object sender, RoutedEventArgs e)
-        {
-            mainFrame.NavigationService.Navigate(new Uri("NewTraining.xaml", UriKind.Relative));
-        }
-
-        private void btnHistory_Click(object sender, RoutedEventArgs e)
-        {
-            mainFrame.NavigationService.Navigate(new Uri("History.xaml", UriKind.Relative));
-        }
-
-        private void btnExercises_Click(object sender, RoutedEventArgs e)
-        {
-            mainFrame.NavigationService.Navigate(new Uri("Exercises.xaml", UriKind.Relative));
+            if (sender is Button button && button.Tag is string page)
+            {
+                mainFrame.Navigate(new Uri(page, UriKind.Relative));
+            }
         }
     }
 }
