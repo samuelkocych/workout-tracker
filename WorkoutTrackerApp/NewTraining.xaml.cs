@@ -125,8 +125,10 @@ namespace WorkoutTrackerApp
                 if (!int.TryParse(tbxTotalDuration.Text, out int duration) || duration <= 0)
                     throw new Exception("Enter valid duration");
 
-                if (dpDatePicker.SelectedDate is not DateTime date)
-                    throw new Exception("Select valid date");
+                if (!dpDatePicker.SelectedDate.HasValue)
+                    throw new Exception("Select a valid date");
+
+                DateTime date = dpDatePicker.SelectedDate.Value;
 
                 // create new workout
                 Workout workout = new Workout(tbxTrainingName.Text, date, duration);

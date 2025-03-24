@@ -16,9 +16,6 @@ using WorkoutTrackerApp.Classes;
 
 namespace WorkoutTrackerApp
 {
-    /// <summary>
-    /// Interaction logic for History.xaml
-    /// </summary>
     public partial class History : Page
     {
         WorkoutData db = new WorkoutData();
@@ -34,6 +31,12 @@ namespace WorkoutTrackerApp
         {
             try
             {
+                if (db.Workouts == null)
+                {
+                    CustomMessageBox.Show("Database connection failed.");
+                    return;
+                }
+
                 var query = from w in db.Workouts
                             orderby w.Date descending
                             select w;
@@ -45,28 +48,36 @@ namespace WorkoutTrackerApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Error loading workouts: {ex.Message}");
             }
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            // check if sender is a button and has integer ID
-            if (sender is Button btn && btn.Tag is int workoutId)
+            try
             {
-                var query = from w in db.Workouts
-                            where w.WorkoutID == workoutId
-                            select w;
-
-                var workoutToDelete = query.FirstOrDefault();
-
-                // if workout is find, delete it from the database
-                if (workoutToDelete != null)
+                // check if sender is a button and has integer ID
+                if (sender is Button btn && btn.Tag is int workoutId)
                 {
-                    db.Workouts.Remove(workoutToDelete);
-                    db.SaveChanges();
-                    LoadWorkouts();
+                    // find the workout to delete
+                    var query = from w in db.Workouts
+                                where w.WorkoutID == workoutId
+                                select w;
+
+                    var workoutToDelete = query.FirstOrDefault();
+
+                    // if workout is find, delete it from the database
+                    if (workoutToDelete != null)
+                    {
+                        db.Workouts.Remove(workoutToDelete);
+                        db.SaveChanges();
+                        LoadWorkouts(); // refresh UI
+                    }
                 }
+            }
+            catch (Exception ex) 
+            {
+                CustomMessageBox.Show($"Error deleting workout: {ex.Message}");
             }
         }
     }

@@ -17,29 +17,37 @@ using System.Data.Entity;
 
 namespace WorkoutTrackerApp
 {
-    /// <summary>
-    /// Interaction logic for Exercises.xaml
-    /// </summary>
     public partial class Exercises : Page
     {
         public Exercises()
         {
             InitializeComponent();
         }
-       
+
+        // fetches exercises based on the selected muscle group
         private async void btnSearch_Click(object sender, RoutedEventArgs e)
         {
+            // ensure a muscle group is selected
             if (cbxMuscles.SelectedItem is ComboBoxItem selectedItem)
             {
                 string muscle = selectedItem.Content.ToString().ToLower();
 
 
-                List<ExerciseApi> exercises = await FetchData.GetExercisesAsync(muscle);
-                lbxExercises.ItemsSource = exercises;
+                try
+                {
+                    List<ExerciseApi> exercises = await FetchData.GetExercisesAsync(muscle);
+                    lbxExercises.ItemsSource = exercises;
+                }
+                catch (Exception ex)
+                {
+                    CustomMessageBox.Show($"Error fetching exercises: {ex.Message}");
+                }
+
+               
             }
             else
             {
-                MessageBox.Show("Please select a muscle group.");
+                CustomMessageBox.Show("Please select a muscle group.");
             }
         }
     }

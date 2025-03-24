@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WorkoutTrackerApp
 {
+    // represents a workout with multiple exercises
     public class Workout
     {
         public int WorkoutID { get; set; }
@@ -29,6 +30,7 @@ namespace WorkoutTrackerApp
             Exercises = new List<Exercise>();
         }
 
+        // returns workout details as a string
         public override string ToString()
         {
             return $"{Name} ({Date.ToShortDateString()}) - {TotalDuration} min";

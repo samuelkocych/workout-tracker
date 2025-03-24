@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace WorkoutTrackerApp
 {
-    /// <summary>
-    /// Interaction logic for CustomMessageBox.xaml
-    /// </summary>
     public partial class CustomMessageBox : Window
     {
         public CustomMessageBox(string message)

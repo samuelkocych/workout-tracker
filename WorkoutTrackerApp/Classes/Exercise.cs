@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WorkoutTrackerApp
 {
+    // represents an exercise in a workout
     public class Exercise
     {
         public int ExerciseID { get; set; }
@@ -27,6 +28,7 @@ namespace WorkoutTrackerApp
             Weight = weight;
         }
 
+        // returns exercise details as a string
         public override string ToString()
         {
             return $"{Name} - {Sets} Sets x {Reps} Reps x {Weight} kg";

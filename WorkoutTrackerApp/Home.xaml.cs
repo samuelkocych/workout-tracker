@@ -19,9 +19,6 @@ using System.Data.Entity;
 
 namespace WorkoutTrackerApp
 {
-    /// <summary>
-    /// Interaction logic for Home.xaml
-    /// </summary>
     public partial class Home : Page
     {
         WorkoutData db = new WorkoutData(); // database context

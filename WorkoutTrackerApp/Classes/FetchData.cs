@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace WorkoutTrackerApp
 {
+    // handles API requests for fetching exercises
     public class FetchData
     {
         private static readonly HttpClient client = new HttpClient();
@@ -28,7 +29,8 @@ namespace WorkoutTrackerApp
                 string json = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<List<ExerciseApi>>(json);
             }
-            return new List<ExerciseApi>();
+
+            return new List<ExerciseApi>(); // return empty list if API call fails
         }
     }
 }
