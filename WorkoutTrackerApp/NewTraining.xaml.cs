@@ -22,7 +22,7 @@ namespace WorkoutTrackerApp
     /// </summary>
     public partial class NewTraining : Page
     {
-        WorkoutData db = new WorkoutData();
+        WorkoutData db = new WorkoutData(); // database instance
 
         public NewTraining()
         {
@@ -31,60 +31,57 @@ namespace WorkoutTrackerApp
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            dpDatePicker.SelectedDate = DateTime.Today;
+            dpDatePicker.SelectedDate = DateTime.Today; // set default date to today
         }
 
         private void btnAddExercise_Click(object sender, RoutedEventArgs e)
         {
+            // check if exercise is selected
             if (cmbExercises.SelectedItem == null)
             {
                 CustomMessageBox.Show("Please select an exercise");
                 return;
             }
 
+            // validate sets input
             if (!int.TryParse(tbxSets.Text, out int sets) || sets <= 0)
             {
                 CustomMessageBox.Show("Please enter a valid number of sets");
                 return;
             }
 
+            // validate reps input
             if (!int.TryParse(tbxReps.Text, out int reps) || reps <= 0)
             {
                 CustomMessageBox.Show("Please enter a valid number of reps.");
                 return;
             }
 
+            // validate weight input
             if (!double.TryParse(tbxWeight.Text, out double weight) || weight < 0)
             {
                 CustomMessageBox.Show("Please enter a valid weight.");
                 return;
             }
 
-            string name = ((ComboBoxItem)cmbExercises.SelectedItem).Content.ToString();
-           
-            Exercise selectedExercise = lbxExercises.SelectedItem as Exercise;
+            string name = ((ComboBoxItem)cmbExercises.SelectedItem).Content.ToString(); // get exercise name
 
+            // check if editing an existing exercise
+            Exercise selectedExercise = lbxExercises.SelectedItem as Exercise;
             if (selectedExercise != null)
             {
                 selectedExercise.Name = name;
                 selectedExercise.Sets = sets;
                 selectedExercise.Reps = reps;
                 selectedExercise.Weight = weight;
-
-                lbxExercises.Items.Refresh();
+                lbxExercises.Items.Refresh(); // update list
             }
             else
             {
-                Exercise newExercise = new Exercise(name, sets, reps, weight);
-                lbxExercises.Items.Add(newExercise);
+                lbxExercises.Items.Add(new Exercise(name, sets, reps, weight)); // add new exercise
             }
 
-            // reset all values
-            cmbExercises.SelectedIndex = -1;
-            tbxSets.Clear();
-            tbxReps.Clear();
-            tbxWeight.Clear();
-            lbxExercises.SelectedItem = null;
+            ResetExerciseInput(); // clear inputs
         }
 
         private void btnDeleteExercise_Click(object sender, RoutedEventArgs e)
@@ -94,7 +91,7 @@ namespace WorkoutTrackerApp
 
             if (exerciseToDelete != null)
             {
-                lbxExercises.Items.Remove(exerciseToDelete);
+                lbxExercises.Items.Remove(exerciseToDelete); // remove exercise
             }
         }
 
@@ -106,6 +103,7 @@ namespace WorkoutTrackerApp
 
             if (selectedExercise != null)
             {
+                // load exercise details into inputs
                 tbxSets.Text = selectedExercise.Sets.ToString();
                 tbxReps.Text = selectedExercise.Reps.ToString();
                 tbxWeight.Text = selectedExercise.Weight.ToString();
@@ -121,12 +119,19 @@ namespace WorkoutTrackerApp
         {
             try
             {
-                string name = tbxTrainingName.Text;
-                int duration = int.Parse(tbxTotalDuration.Text);
-                DateTime date = dpDatePicker.SelectedDate.GetValueOrDefault();
+                if (string.IsNullOrWhiteSpace(tbxTrainingName.Text))
+                    throw new Exception("Enter workout name");
 
-                Workout workout = new Workout(name, date, duration);
+                if (!int.TryParse(tbxTotalDuration.Text, out int duration) || duration <= 0)
+                    throw new Exception("Enter valid duration");
 
+                if (dpDatePicker.SelectedDate is not DateTime date)
+                    throw new Exception("Select valid date");
+
+                // create new workout
+                Workout workout = new Workout(tbxTrainingName.Text, date, duration);
+
+                // add exercises to workout
                 foreach (Exercise ex in lbxExercises.Items)
                 {
                     ex.Workout = workout;
@@ -134,20 +139,32 @@ namespace WorkoutTrackerApp
                 }
 
                 db.Workouts.Add(workout);
-                db.SaveChanges();
+                db.SaveChanges(); // save to database
 
-                CustomMessageBox.Show("Wokrout succesfully saved");
-
-                // reset the form
-                tbxTrainingName.Clear();
-                tbxTotalDuration.Clear();
-                dpDatePicker.SelectedDate = null;
-                lbxExercises.Items.Clear();
+                CustomMessageBox.Show("Workout succesfully saved");
+                ResetTrainingForm(); // clear form
             }
-            catch 
+            catch (Exception ex) 
             {
-                CustomMessageBox.Show("Fill in name, duration and date");
+                CustomMessageBox.Show(ex.Message); // show error
             }
+        }
+
+        private void ResetExerciseInput()
+        {
+            cmbExercises.SelectedIndex = -1;
+            tbxSets.Clear();
+            tbxReps.Clear();
+            tbxWeight.Clear();
+            lbxExercises.SelectedItem = null;
+        }
+
+        private void ResetTrainingForm()
+        {
+            tbxTrainingName.Clear();
+            tbxTotalDuration.Clear();
+            dpDatePicker.SelectedDate = null;
+            lbxExercises.Items.Clear();
         }
     }
 }
