@@ -29,11 +29,5 @@ namespace WorkoutTrackerApp
             TotalDuration = totalDuration;
             Exercises = new List<Exercise>();
         }
-
-        // returns workout details as a string
-        public override string ToString()
-        {
-            return $"{Name} ({Date.ToShortDateString()}) - {TotalDuration} min";
-        }
     }
 }

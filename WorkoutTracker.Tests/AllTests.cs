@@ -5,7 +5,7 @@ using WorkoutTrackerApp;
 namespace WorkoutTracker.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class AllTests
     {
         // Exercise class tests
         [TestMethod]
@@ -50,5 +50,27 @@ namespace WorkoutTracker.Tests
             Assert.AreEqual(1, workout.Exercises.Count);
             Assert.AreEqual("Deadlift", workout.Exercises[0].Name);
         }
+
+
+        // testing the relationships between workout end exercises
+        [TestMethod]
+        public void TestRelationships()
+        {
+            // arrange
+            var workout = new Workout("Test Workout", DateTime.Now, 30);
+            var exercise = new Exercise("Pull-up", 3, 8, 85);
+
+            // act
+            exercise.Workout = workout;
+            workout.Exercises.Add(exercise);
+
+            // assert
+            Assert.AreEqual(workout, exercise.Workout);
+            Assert.AreEqual(1, workout.Exercises.Count);
+            Assert.AreEqual(exercise, workout.Exercises[0]);
+        }
+
+
+        // tesing the home page
     }
 }
