@@ -97,7 +97,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Workout.cs" />
-    <Page Include="CustomMessageBox.xaml">
+    <Page Include="Pages\CustomMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,7 +124,7 @@
     <Compile Include="Classes\Exercise.cs" />
     <Compile Include="Data\WorkoutData.cs" />
     <Compile Include="API\ExerciseApi.cs" />
-    <Compile Include="CustomMessageBox.xaml.cs">
+    <Compile Include="Pages\CustomMessageBox.xaml.cs">
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Exercises.xaml.cs">

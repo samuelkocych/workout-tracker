@@ -123,6 +123,9 @@ namespace WorkoutTrackerApp
                 if (!dpDatePicker.SelectedDate.HasValue)
                     throw new Exception("Select a valid date");
 
+                if (lbxExercises.Items.Count == 0)
+                    throw new Exception("Add at least one exercise");
+
                 DateTime date = dpDatePicker.SelectedDate.Value;
 
                 // create new workout

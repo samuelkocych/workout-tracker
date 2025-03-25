@@ -129,7 +129,7 @@ namespace WorkoutTrackerApp
         // navigate to new training page
         private void btnStartNewTraining_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new Uri("NewTraining.xaml", UriKind.Relative)); // '?' means is only called if is not null
+            NavigationService?.Navigate(new Uri("Pages/NewTraining.xaml", UriKind.Relative)); // '?' means is only called if is not null
         }
     }
 }
