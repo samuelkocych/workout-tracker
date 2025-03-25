@@ -25,8 +25,8 @@
                 <ComboBoxItem Content="Glutes"/>
                 <ComboBoxItem Content="Hamstrings"/>
                 <ComboBoxItem Content="Lats"/>
-                <ComboBoxItem Content="Lower_back"/>
-                <ComboBoxItem Content="Middle_back"/>
+                <ComboBoxItem Content="Lower back"/>
+                <ComboBoxItem Content="Middle back"/>
                 <ComboBoxItem Content="Neck"/>
                 <ComboBoxItem Content="Quadriceps"/>
                 <ComboBoxItem Content="Traps"/>

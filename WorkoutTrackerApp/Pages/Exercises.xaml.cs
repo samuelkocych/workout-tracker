@@ -15,16 +15,10 @@ using System.Windows.Shapes;
 using System.Data.Entity;
 using WorkoutTrackerApp.Services;
 
-
 namespace WorkoutTrackerApp
 {
     public partial class Exercises : Page
     {
-        public Exercises()
-        {
-            InitializeComponent();
-        }
-
         // fetches exercises based on the selected muscle group
         private async void btnSearch_Click(object sender, RoutedEventArgs e)
         {
@@ -35,8 +29,7 @@ namespace WorkoutTrackerApp
 
                 try
                 {
-                    ExerciseApiService exerciseService = new ExerciseApiService();
-                    List<ExerciseApi> exercises = await exerciseService.GetExercisesAsync(muscle);
+                    List<ExerciseApi> exercises = await FetchData.GetExercisesAsync(muscle);
                     lbxExercises.ItemsSource = exercises;
                 }
                 catch (Exception ex)
