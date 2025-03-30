@@ -1,7 +1,7 @@
 # Workout Tracker  
 *A WPF desktop app for tracking gym sessions with exercise discovery and progress analytics.*
 
-![Dashboard Screenshot](Screenshots/home.png)  
+![Dashboard Screenshot](WorkoutTrackerApp/Screenshots/home.png)  
 
 ## Key Features  
 - **Workout Logging** - Track sets, reps, weights and duration  
