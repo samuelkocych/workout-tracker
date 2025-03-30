@@ -11,6 +11,11 @@
 - **Clean UI** - Material Design interface  
 
 ## How to run 
-**Clone the repository** in Visual Studio:
-   ```bash
-   git clone https://github.com/samuelkocych/workout-tracker.git
+- Clone the repository:
+```bash
+git clone https://github.com/samuelkocych/workout-tracker.git 
+```
+
+- Open in Visual Studio
+- Restore Nuget packages
+- Run WorkoutTrackepApp project
