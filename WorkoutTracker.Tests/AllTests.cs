@@ -19,7 +19,7 @@ namespace WorkoutTracker.Tests
             Assert.AreEqual(3, exercise.Sets);
             Assert.AreEqual(10, exercise.Reps);
             Assert.AreEqual(60.0, exercise.Weight);
-        }
+        } 
 
         [TestMethod]
         public void TestExerciseToString()
@@ -69,8 +69,5 @@ namespace WorkoutTracker.Tests
             Assert.AreEqual(1, workout.Exercises.Count);
             Assert.AreEqual(exercise, workout.Exercises[0]);
         }
-
-
-        // tesing the home page
     }
 }
