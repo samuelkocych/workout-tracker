@@ -18,4 +18,4 @@ git clone https://github.com/samuelkocych/workout-tracker.git
 
 - Open in Visual Studio
 - Restore Nuget packages
-- Run WorkoutTrackepApp project
+- Run WorkoutTrackerApp project
