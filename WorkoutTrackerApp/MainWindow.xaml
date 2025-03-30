@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorkoutTrackerApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1200"
+        Title="Workout Tracker" Height="800" Width="1200"
         MinHeight="600" MinWidth="900"
         MaxHeight="1000" MaxWidth="1500"
         WindowStartupLocation="CenterScreen">
