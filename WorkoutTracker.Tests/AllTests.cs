@@ -7,7 +7,7 @@ namespace WorkoutTracker.Tests
     [TestClass]
     public class AllTests
     {
-        // Exercise class tests
+        // testing if the exercise object is properly initaliazed
         [TestMethod]
         public void TestExerciseCreatesCorrectly()
         {
@@ -19,8 +19,9 @@ namespace WorkoutTracker.Tests
             Assert.AreEqual(3, exercise.Sets);
             Assert.AreEqual(10, exercise.Reps);
             Assert.AreEqual(60.0, exercise.Weight);
-        } 
+        }
 
+        // testing if the ToString method returns the correctly formatted exercise details
         [TestMethod]
         public void TestExerciseToString()
         {
@@ -34,8 +35,7 @@ namespace WorkoutTracker.Tests
             Assert.AreEqual("Squat - 4 Sets x 8 Reps x 70 kg", result);
         }
 
-
-        // Workout class tests
+        // testing if the exercise is correctly added to a workout
         [TestMethod]
         public void TestWorkoutAddsExercise()
         {
@@ -50,7 +50,6 @@ namespace WorkoutTracker.Tests
             Assert.AreEqual(1, workout.Exercises.Count);
             Assert.AreEqual("Deadlift", workout.Exercises[0].Name);
         }
-
 
         // testing the relationships between workout end exercises
         [TestMethod]
